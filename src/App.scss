@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #151618;
+  color: white;
+}
+.contactPage_Container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .registerContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 30%;
+    gap: 15px;
+    background: rgb(228, 225, 225);
+    border-radius: 5px;
+    padding: 5%;
+    div {
+      width: 100%;
+    }
+    h1 {
+      margin-bottom: 5%;
+    }
+    button {
+      margin-top: 5%;
+    }
+  }
+}

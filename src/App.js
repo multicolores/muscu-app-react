@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import "./App.scss";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import MainPage from "./Pages/MainPage";
+import { CookiesProvider } from "react-cookie";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CookiesProvider>
+      <Router>
+        <div className="App">
+          <h1>Muscu App</h1>
+          <nav>
+            <Link to="/register">Register </Link>
+            <Link to="/login">Login </Link>
+            <Link to="/mainpage">Main Page</Link>
+          </nav>
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/mainpage" element={<MainPage />} />
+            {/* <Route path="about" element={<About />} /> */}
+          </Routes>
+        </div>
+      </Router>
+    </CookiesProvider>
   );
 }
 
