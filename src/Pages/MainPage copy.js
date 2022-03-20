@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 // import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 // import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { useCookies } from "react-cookie";
 
@@ -85,6 +86,26 @@ function MainPage() {
       maxAge: 3600,
     });
   }
+
+  function getThecookie() {
+    console.log(cookies.user);
+  }
+
+  function getInfoWithautorisation() {
+    axios
+      .get("https://api-nodejs-todo.herokuapp.com/exercise", {
+        headers: {
+          "auth-token": cookies.user,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   return (
     <div>
       <header>
@@ -112,6 +133,12 @@ function MainPage() {
       </Button>
       <Button variant="contained" onClick={setAcookie}>
         Set cookie
+      </Button>
+      <Button variant="contained" onClick={getThecookie}>
+        get cookie
+      </Button>
+      <Button variant="contained" onClick={getInfoWithautorisation}>
+        Get exercise with token
       </Button>
     </div>
   );
