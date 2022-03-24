@@ -8,7 +8,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 
 import { useCookies } from "react-cookie";
-import Workouts from "./Workouts";
+import Workout from "./Workout";
 
 // material ui imports
 // import Fab from "@material-ui/core/Fab";
@@ -26,7 +26,7 @@ function Application(props: any) {
     <div>
       <h1>{user.name}</h1>
       {workouts.length > 0 ? (
-        <Workouts workouts={workouts} />
+        <Workout workouts={workouts} />
       ) : (
         <h2>Aucun workout :( en créer un </h2>
       )}

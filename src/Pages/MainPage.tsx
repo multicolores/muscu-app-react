@@ -7,7 +7,7 @@ import axios from "axios";
 
 import { useCookies } from "react-cookie";
 import Application from "../components/Application";
-import Workouts from "../components/Workouts";
+import Workout from "../components/Workout";
 
 function MainPage() {
   const [data, setData] = useState(null);
@@ -18,7 +18,7 @@ function MainPage() {
 
   const [cookies, setCookie] = useCookies(["user"]);
   const [workouts, setWorkouts] = useState([]);
-  const [loadingWorkout, setLoadingWorkout] = useState(true);
+  // const [workouts, setWorkouts] = useState([]);
   const [errorWorkout, setErrorWorkout] = useState(null);
   useEffect(() => {
     // User data fetching here
@@ -34,8 +34,10 @@ function MainPage() {
         setUserinfo(res.data.user);
         setWorkout(res.data.user.workout);
         console.log(res.data.user.workout);
-        if (res.data.user.workout.length > 0)
-          getWorkouts(res.data.user.workout);
+        // if (res.data.user.workout.length > 0) {
+        //   getWorkouts(res.data.user.workout);
+        // }
+        // console.log(workouts);
         setError(null);
       })
       .catch((err) => {
@@ -48,29 +50,26 @@ function MainPage() {
       });
   }, []);
 
-  function getWorkouts(workoutsArray: any) {
-    workoutsArray.map((id: any) => {
-      axios
-        .get("https://api-nodejs-todo.herokuapp.com/workout/" + id, {
-          headers: {
-            "auth-token": cookies.user,
-          },
-        })
-        .then((res) => {
-          //   console.log(res.data);
-          workouts.push(res.data);
-          console.log(workouts);
-          setErrorWorkout(null);
-        })
-        .catch((err) => {
-          console.log(err.message);
-          setErrorWorkout(err.message);
-        })
-        .finally(() => {
-          setLoadingWorkout(false);
-        });
-    });
-  }
+  // function getWorkouts(workoutsArray: any) {
+  //   workoutsArray.map((id: any) => {
+  //     axios
+  //       .get("https://api-nodejs-todo.herokuapp.com/workout/" + id, {
+  //         headers: {
+  //           "auth-token": cookies.user,
+  //         },
+  //       })
+  //       .then((res) => {
+  //         //   console.log(res.data);
+  //         workouts.push(res.data);
+  //         console.log(workouts);
+  //         setErrorWorkout(null);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err.message);
+  //         setErrorWorkout(err.message);
+  //       });
+  //   });
+  // }
 
   // function getInfoWithautorisation() {
   //   axios
@@ -99,12 +98,36 @@ function MainPage() {
         </h1>
       )}
 
-      {!loadingWorkout &&
+      {/* {workout && <TestChildElement data={workout} />} */}
+
+      {workout &&
+        workout.map((id: any) => <Workout workout_id={id} key={id} />)}
+
+      {/* {workout &&
+        workout.forEach((id: any) => {
+          <h1>{id}</h1>;
+        })} */}
+
+      {/* {workout &&
+        (workouts.length === workout.length ? (
+          <Workouts workouts={workouts} />
+        ) : (
+          <h2>Aucun workout :( en créer un </h2>
+        ))} */}
+
+      {/* {workout &&
+        (workouts.length === workout.length ? (
+          <Workouts workouts={workouts} />
+        ) : (
+          <h2>Aucun workout :( en créer un </h2>
+        ))} */}
+
+      {/* {!loadingWorkout &&
         (workouts.length > 0 ? (
           <Workouts workouts={workouts} />
         ) : (
           <h2>Aucun workout :( en créer un </h2>
-        ))}
+        ))} */}
 
       {/* {workouts.length > 0 ? (
         <Workouts workouts={workouts} />
