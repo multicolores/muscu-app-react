@@ -7,6 +7,7 @@ import axios from "axios";
 
 import { useCookies } from "react-cookie";
 import Application from "../components/Application";
+import Workouts from "../components/Workouts";
 
 function MainPage() {
   const [data, setData] = useState(null);
@@ -16,7 +17,9 @@ function MainPage() {
   const [error, setError] = useState(null);
 
   const [cookies, setCookie] = useCookies(["user"]);
-
+  const [workouts, setWorkouts] = useState([]);
+  const [loadingWorkout, setLoadingWorkout] = useState(true);
+  const [errorWorkout, setErrorWorkout] = useState(null);
   useEffect(() => {
     // User data fetching here
     axios
@@ -30,6 +33,9 @@ function MainPage() {
         setData(res.data);
         setUserinfo(res.data.user);
         setWorkout(res.data.user.workout);
+        console.log(res.data.user.workout);
+        if (res.data.user.workout.length > 0)
+          getWorkouts(res.data.user.workout);
         setError(null);
       })
       .catch((err) => {
@@ -41,6 +47,30 @@ function MainPage() {
         setLoading(false);
       });
   }, []);
+
+  function getWorkouts(workoutsArray: any) {
+    workoutsArray.map((id: any) => {
+      axios
+        .get("https://api-nodejs-todo.herokuapp.com/workout/" + id, {
+          headers: {
+            "auth-token": cookies.user,
+          },
+        })
+        .then((res) => {
+          //   console.log(res.data);
+          workouts.push(res.data);
+          console.log(workouts);
+          setErrorWorkout(null);
+        })
+        .catch((err) => {
+          console.log(err.message);
+          setErrorWorkout(err.message);
+        })
+        .finally(() => {
+          setLoadingWorkout(false);
+        });
+    });
+  }
 
   // function getInfoWithautorisation() {
   //   axios
@@ -61,7 +91,26 @@ function MainPage() {
     <div>
       {loading && <div>A moment please...</div>}
       {error && <div>{`There is a problem fetching user data - ${error}`}</div>}
-      {data && <Application user={data.user} workout={data.user.workout} />}
+      {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
+      {data && (
+        <h1>
+          Il y a des data on peut faire des truc avec comme afficher le nom du
+          mec ect..
+        </h1>
+      )}
+
+      {!loadingWorkout &&
+        (workouts.length > 0 ? (
+          <Workouts workouts={workouts} />
+        ) : (
+          <h2>Aucun workout :( en créer un </h2>
+        ))}
+
+      {/* {workouts.length > 0 ? (
+        <Workouts workouts={workouts} />
+      ) : (
+        <h2>Aucun workout :( en créer un </h2>
+      )} */}
 
       {/* <ul>
           {data &&

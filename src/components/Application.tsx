@@ -2,11 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 // import { TextField } from "@mui/material";
 // import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 // import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { useCookies } from "react-cookie";
+import Workouts from "./Workouts";
 
 // material ui imports
 // import Fab from "@material-ui/core/Fab";
@@ -14,13 +16,17 @@ import { useCookies } from "react-cookie";
 
 function Application(props: any) {
   let user = props.user;
-  let workout = props.workout;
+  let workouts = props.workout;
+
+  if (workouts.length > 0) {
+    workouts.map((id: any) => console.log(id));
+  }
 
   return (
     <div>
       <h1>{user.name}</h1>
-      {workout.lenght > 0 ? (
-        <h2>ils y as des workout</h2>
+      {workouts.length > 0 ? (
+        <Workouts workouts={workouts} />
       ) : (
         <h2>Aucun workout :( en créer un </h2>
       )}
@@ -29,7 +35,10 @@ function Application(props: any) {
         <AddIcon />
       </Fab> */}
 
-      <Button variant="contained">Get Token</Button>
+      {/* <Button variant="contained">Create a workout</Button>
+      <Link to="/exercises">
+        <Button variant="contained">Create an exercise</Button>
+      </Link> */}
     </div>
   );
 }
