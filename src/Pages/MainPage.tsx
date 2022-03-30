@@ -92,10 +92,11 @@ function MainPage() {
       {error && <div>{`There is a problem fetching user data - ${error}`}</div>}
       {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
       {data && (
-        <h1>
+        <div>
+          <h1>{data.name}</h1>
           Il y a des data on peut faire des truc avec comme afficher le nom du
           mec ect..
-        </h1>
+        </div>
       )}
 
       {/* {workout && <TestChildElement data={workout} />} */}

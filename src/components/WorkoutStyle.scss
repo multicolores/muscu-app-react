@@ -1,0 +1,24 @@
+.workoutContainer {
+  margin: 3vh 5vw;
+  .exerciseTable {
+    width: 40vw;
+    padding: 4vh 5vw;
+    .exoInfo {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .repsContainer {
+      width: 70%;
+      padding: 5% 0;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      .repRow {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 3% 0;
+      }
+    }
+  }
+}

@@ -28,7 +28,7 @@ function Login() {
   function setACookie(token) {
     setCookie("user", token, {
       path: "/",
-      maxAge: 3600,
+      maxAge: 7200,
     });
   }
 

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@400;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +8,13 @@
 body {
   background-color: #151618;
   color: white;
+  font-family: "Montserrat", sans-serif;
 }
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+}
+
 .contactPage_Container {
   height: 100vh;
   width: 100%;

@@ -1,0 +1,22 @@
+.inputRepContainer {
+  width: 70%;
+  position: relative;
+  padding: 10% 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  input {
+    width: 12%;
+    color: white;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 2px solid white;
+    transition: 0.3s;
+    &:focus {
+      outline: none !important;
+      border-bottom: 2px solid rgb(27, 213, 219);
+    }
+  }
+}
