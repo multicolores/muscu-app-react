@@ -1,0 +1,28 @@
+.creatWorkout_container{
+    padding: 0 20vw;
+    form{
+        padding: 0 10vw;
+        input{
+            background: rgba(255, 255, 255, 0.077);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 2em;
+            padding: 10px 10px;
+        }
+        label{
+            display: inline-block;
+            padding-top: 5%;
+            padding-bottom: 2%;
+        }
+        .exercisesInputs{
+            padding: 5vh 5vw;
+            border-radius: 10px;
+            margin: 5vh 0;
+            border: 1px solid rgba(255, 255, 255, 0.216);
+            & > *{
+                width: 100%
+            }
+        }
+    }
+}
