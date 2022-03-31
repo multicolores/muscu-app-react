@@ -25,6 +25,7 @@ function App() {
             <Route path="/mainpage" element={<MainPage />} />
             <Route path="/exercises" element={<Exercises />} />
             <Route path="/create-workouts" element={<CreateWorkout />} />
+
             {/* <Route path="about" element={<About />} /> */}
           </Routes>
         </div>

@@ -8,6 +8,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import Application from "../components/Application";
 import Workout from "../components/Workout";
+import { Link, useNavigate } from "react-router-dom";
 
 function MainPage() {
   const [data, setData] = useState(null);
@@ -86,6 +87,11 @@ function MainPage() {
   //     });
   // }
 
+  const navigate = useNavigate();
+  const toCreateWorkout = () => {
+    navigate("/create-workouts", { state: data });
+  };
+
   return (
     <div>
       {loading && <div>A moment please...</div>}
@@ -93,9 +99,20 @@ function MainPage() {
       {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
       {data && (
         <div>
-          <h1>{data.name}</h1>
-          Il y a des data on peut faire des truc avec comme afficher le nom du
-          mec ect..
+          <h1>{data.user.name}</h1>
+          <p>
+            Il y a des data on peut faire des truc avec comme afficher le nom du
+            mec ect..
+          </p>
+          <Button
+            variant="contained"
+            className="btAddTraining"
+            onClick={() => {
+              toCreateWorkout();
+            }}
+          >
+            Create a Workout
+          </Button>
         </div>
       )}
 
