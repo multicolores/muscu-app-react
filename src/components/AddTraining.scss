@@ -4,9 +4,11 @@
   padding: 10% 0;
   margin-left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  .inputs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
   input {
     width: 12%;
     color: white;
@@ -14,9 +16,46 @@
     border: none;
     border-bottom: 2px solid white;
     transition: 0.3s;
+    text-align: center;
+    margin-left: 2px;
     &:focus {
       outline: none !important;
       border-bottom: 2px solid rgb(27, 213, 219);
     }
+  }
+  .submitInput {
+    position: absolute;
+    // left: 50%;
+    // transform: translateX(-50%);
+    // bottom: -15%;
+    border: none;
+    width: auto;
+    cursor: pointer;
+    padding: 5% 7%;
+    position: absolute;
+    right: -29%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .sendIcon {
+    position: absolute;
+    // left: 50%;
+    // transform: translateX(-50%);
+    // bottom: -15%;
+    border: none;
+    width: auto;
+    z-index: -1;
+    pointer-events: none;
+
+    position: absolute;
+    right: -25%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .AddSetbt {
+    position: absolute;
+    right: -13%;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }

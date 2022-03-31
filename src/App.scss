@@ -14,6 +14,14 @@ body {
 h1 {
   font-family: "Montserrat", sans-serif;
 }
+nav{
+  text-align: right;
+  a{
+    margin-right: 5%;
+    color: white;
+    text-decoration: none;
+  }
+}
 
 .contactPage_Container {
   height: 100vh;

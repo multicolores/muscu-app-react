@@ -5,7 +5,7 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import MainPage from "./Pages/MainPage";
 import Exercises from "./Pages/Exercises";
-import Workouts from "./Pages/Workouts";
+import CreateWorkout from "./Pages/create-workouts";
 import { CookiesProvider } from "react-cookie";
 function App() {
   return (
@@ -17,13 +17,14 @@ function App() {
             <Link to="/register">Register </Link>
             <Link to="/login">Login </Link>
             <Link to="/mainpage">Main Page</Link>
+            <Link to="/create-workouts">Create Workouts</Link>
           </nav>
           <Routes>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/mainpage" element={<MainPage />} />
             <Route path="/exercises" element={<Exercises />} />
-            <Route path="/workouts" element={<Workouts />} />
+            <Route path="/create-workouts" element={<CreateWorkout />} />
             {/* <Route path="about" element={<About />} /> */}
           </Routes>
         </div>

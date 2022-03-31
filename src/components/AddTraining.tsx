@@ -6,12 +6,15 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-
+import SendIcon from "@mui/icons-material/Send";
 // import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { useCookies } from "react-cookie";
 import "./AddTraining.scss";
+
+//import functions
+import { updateWorkout } from "../servicesFunctions/updateWorkout";
 
 function AddTraining(props: any) {
   const [cookies, setCookie] = useCookies(["user"]);
@@ -22,8 +25,6 @@ function AddTraining(props: any) {
 
   //   setData(props.workout);
   const workout = props.workout;
-  let nbSeries = [];
-  //   setnumberSet(nbSeries);
 
   function ExerciseInfo() {
     // https://flaviocopes.com/react-how-to-loop/
@@ -31,57 +32,78 @@ function AddTraining(props: any) {
     let items = [];
     for (let i = 0; i < workout.exercise.length; i++) {
       console.log(workout.exercise[i].name);
-      nbSeries[i] = workout.exercise[i].repetition[0].length;
-      //   setnumberSet(nbSeries);
-      console.log(nbSeries);
-      //   console.log(numberSet);
       items.push(
-        <div className="exerciseTable">
-          <div className="exoInfo">
-            <span>{workout.exercise[i].name}</span>
-            <span>{workout.exercise[i].recuperation}</span>
-            <span>{workout.exercise[i].weight}</span>
-          </div>
-          <div className="inputRepContainer">
-            {exercieRepInput(nbSeries[i])}
-            <IconButton
-              aria-label="delete"
-              onClick={() => {
-                addSerie(i);
-              }}
-              color="primary"
-            >
-              <AddCircleIcon />
-            </IconButton>
-            {/* <Button variant="outlined" startIcon={<AddCircleIcon />}></Button> */}
-          </div>
-        </div>
+        <ExoRepsInput
+          exercise={workout.exercise[i]}
+          key={Math.random()}
+          workoutData={workout}
+        />
       );
     }
     return items;
   }
 
-  function exercieRepInput(seriesNumber: number) {
-    let repInput = [];
-    for (let e = 0; e < seriesNumber; e++) {
-      repInput.push(<input type="text" />);
-    }
-    console.log(seriesNumber);
-    return repInput;
-  }
-  function addSerie(indexSerieArray: any) {
-    console.log(indexSerieArray);
-    nbSeries[indexSerieArray] = nbSeries[indexSerieArray] + 1;
-    console.log(nbSeries);
-  }
   return (
     <div className="AddTraining">
       {/* {loading && <div>A moment please...</div>}
       {error && <div>{`There is a problem fetching user data - ${error}`}</div>} */}
-      <h1>{workout.name}</h1>
+      {/* <h1>{workout.name}</h1> */}
       {ExerciseInfo()}
     </div>
   );
 }
 
 export default AddTraining;
+
+const ExoRepsInput = ({ exercise, workoutData }) => {
+  const [numberSet, setnumberSet] = useState(exercise.repetition[0].length);
+  const [repExoArrya, setrepExoArrya] = useState(null);
+
+  let TrainingrepsArray = [];
+
+  function exercieRepInput() {
+    let repInput = [];
+    for (let e = 0; e < numberSet; e++) {
+      repInput.push(<input type="text" key={Math.random()} />);
+    }
+    console.log(numberSet);
+    return repInput;
+  }
+
+  function handleSubmit(e: any) {
+    // console.log(e);
+    for (let i = 0; i < e.target.length - 1; i++) {
+      TrainingrepsArray.push(parseInt(e.target[i].value));
+    }
+    // console.log(TrainingrepsArray);
+    updateWorkout(TrainingrepsArray, workoutData, exercise);
+    // e.preventDefault();
+  }
+  return (
+    <div className="exerciseTable">
+      <div className="exoInfo">
+        <span>{exercise.name}</span>
+        <span>{exercise.recuperation}</span>
+        <span>{exercise.weight}</span>
+      </div>
+      <div className="inputRepContainer">
+        <form onSubmit={handleSubmit}>
+          <div className="inputs">{exercieRepInput()}</div>
+          <input type="submit" value=" " className="submitInput" />
+        </form>
+        <SendIcon className="sendIcon" />
+        <IconButton
+          aria-label="add set"
+          onClick={() => {
+            setnumberSet(numberSet + 1);
+          }}
+          color="primary"
+          className="AddSetbt"
+        >
+          <AddCircleIcon />
+        </IconButton>
+        {/* <Button variant="outlined" startIcon={<AddCircleIcon />}></Button> */}
+      </div>
+    </div>
+  );
+};

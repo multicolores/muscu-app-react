@@ -1,5 +1,10 @@
 .workoutContainer {
-  margin: 3vh 5vw;
+  margin: 3vh 10vw;
+  position: relative;
+  .btAddTraining {
+    position: absolute;
+    right: 5vw;
+  }
   .exerciseTable {
     width: 40vw;
     padding: 4vh 5vw;
