@@ -98,22 +98,22 @@ function MainPage() {
       {error && <div>{`There is a problem fetching user data - ${error}`}</div>}
       {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
       {data && (
-        <div>
+        <header>
           <h1>{data.user.name}</h1>
-          <p>
+          {/* <p>
             Il y a des data on peut faire des truc avec comme afficher le nom du
             mec ect..
-          </p>
+          </p> */}
           <Button
             variant="contained"
-            className="btAddTraining"
+            className="btAddTraining gradientButton"
             onClick={() => {
               toCreateWorkout();
             }}
           >
             Create a Workout
           </Button>
-        </div>
+        </header>
       )}
 
       {/* {workout && <TestChildElement data={workout} />} */}

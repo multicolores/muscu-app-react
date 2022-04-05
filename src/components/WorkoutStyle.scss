@@ -1,6 +1,47 @@
+@import "../styles/variables";
+
 .workoutContainer {
   margin: 3vh 10vw;
   position: relative;
+  .workoutsCard_container{
+    border: 3px solid $font_color;
+    width: 25vw;
+    padding: 3% 4%;
+    margin: 7vh 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    h2{
+      padding-bottom: 4%;
+      font-size: 3em;
+      text-align: center;
+    }
+    span{
+      display: block;
+    }
+    .description{
+      font-style: italic;
+      text-align: center;
+      padding-bottom: 4%;
+
+    }
+    .date{
+      text-align: end;
+      font-weight: bold;
+      margin-top: 6%;
+    }
+    .exoInfo_container{
+      padding: 10% 0;
+      .exoInfo{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1% 0;
+      }
+    }
+  }
+  h1{
+    font-size: 5vw;
+  }
   .btAddTraining {
     position: absolute;
     right: 5vw;

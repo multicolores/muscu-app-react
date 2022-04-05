@@ -97,13 +97,26 @@ function Workout(props: any) {
       {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
       {data && (
         <>
+          <div className="workoutsCard_container">
+            <h2>{data.name}</h2>
+            <span className="description">{data.description}</span>
+            <div className="exoInfo_container">
+              {data.exercise.map((exercise: any) => (
+                <div className="exoInfo">
+                  <li>{exercise.name}</li>
+                  <span>{exercise.repetition.length} training</span>
+                </div>
+              ))}
+            </div>
+            <span className="date">12/03/2022</span>
+          </div>
           <h1>{data.name}</h1>
           <Button
             variant="contained"
             onClick={() => {
               setAddTrainingbt(!AddTrainingbt);
             }}
-            className="btAddTraining"
+            className="btAddTraining borderButton"
           >
             Add Training
           </Button>

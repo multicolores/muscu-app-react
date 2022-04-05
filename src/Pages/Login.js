@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import "../styles/login_register.scss";
 
 function Login() {
   //   const [data, setData] = useState(null);
@@ -62,22 +63,32 @@ function Login() {
           {/* <TextField label="Name" onChange={handleTextFieldChange} /> */}
           <TextField
             label="Email"
+            variant="standard"
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
           <TextField
             label="Password"
+            variant="standard"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
-          <Link to="/register">
-            <Button variant="outlined">Register</Button>
-          </Link>
-          <Button variant="contained" onClick={RegisterPostRequest}>
-            Login
-          </Button>
+          <div className="button_container">
+            <Link to="/register">
+              <Button variant="outlined" className="registerButton">
+                Register
+              </Button>
+            </Link>
+            <Button
+              variant="contained"
+              onClick={RegisterPostRequest}
+              className="loginButton"
+            >
+              Sign up
+            </Button>
+          </div>
         </div>
       </div>
     </div>

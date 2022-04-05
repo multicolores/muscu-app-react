@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
+import "../styles/login_register.scss";
 
 function Register() {
   const [name, setName] = useState(null);
@@ -112,29 +113,40 @@ function Register() {
           <h1>Registration</h1>
           <TextField
             label="Name"
+            variant="standard"
             onChange={(e) => {
               setName(e.target.value);
             }}
           />
           <TextField
             label="Email"
+            variant="standard"
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
           <TextField
             label="Password"
+            variant="standard"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
-          <Link to="/login">
-            <Button variant="outlined">Login</Button>
-          </Link>
+          <div className="button_container">
+            <Link to="/login">
+              <Button variant="outlined" className="registerButton">
+                Login
+              </Button>
+            </Link>
 
-          <Button variant="contained" onClick={RegisterPostRequest}>
-            Register
-          </Button>
+            <Button
+              variant="contained"
+              onClick={RegisterPostRequest}
+              className="loginButton"
+            >
+              Register
+            </Button>
+          </div>
         </div>
       </div>
     </div>

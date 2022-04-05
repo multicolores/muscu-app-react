@@ -1,7 +1,10 @@
+@import "variables";
+
 .creatWorkout_container{
     padding: 0 20vw;
     form{
         padding: 0 10vw;
+        position: relative;
         input{
             background: rgba(255, 255, 255, 0.077);
             border: none;
@@ -23,6 +26,15 @@
             & > *{
                 width: 100%
             }
+        }
+        .borderButton{
+            position: absolute;
+            right: 0;
+        }
+        .submitInput{
+            background: none;
+            font-size: 1.4em;
+            text-align: end;       
         }
     }
 }

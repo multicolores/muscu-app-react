@@ -73,8 +73,9 @@ function CreateWorkout() {
         </div>
 
         {exercisesInputs()}
-
-        <input type="submit" value="Create workout" className="submitInput" />
+        <Button variant="contained" className="borderButton">
+          <input type="submit" value="Create workout" className="submitInput" />
+        </Button>
       </form>
     </div>
   );

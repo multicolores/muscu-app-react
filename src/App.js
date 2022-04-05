@@ -12,8 +12,10 @@ function App() {
     <CookiesProvider>
       <Router>
         <div className="App">
-          <h1>Muscu App</h1>
           <nav>
+            <h1>
+              <Link to="/mainpage">Muscu App</Link>
+            </h1>
             <Link to="/register">Register </Link>
             <Link to="/login">Login </Link>
             <Link to="/mainpage">Main Page</Link>

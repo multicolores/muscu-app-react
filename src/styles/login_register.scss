@@ -1,0 +1,57 @@
+@import "variables";
+
+
+.contactPage_Container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $bg_color;
+    .registerContainer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 30vw;
+      gap: 15px;
+      background: $font_color;
+      border-radius: 5px;
+      padding: 4% 5%;
+      div {
+        width: 100%;
+      }
+      h1 {
+        margin-bottom: 5%;
+        width: 100%;
+        text-align: center;
+      }
+      .button_container{
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          padding-top: 7%;
+          button {
+            margin-top: 5%;
+            text-transform: none;
+            background: rgba(255, 255, 255, 0);
+            border-radius: 0px;
+            color: $bg_color;
+            box-shadow: none;
+          }
+          a{
+              text-decoration: none;
+              padding: 0;
+              margin: 0;
+          }
+          .loginButton{
+              border: 2px solid $bg_color;
+          }
+          .registerButton{
+              border: none;
+              border-bottom: 2px solid $bg_color;
+              padding: 1% 0;
+          }
+      }
+
+    }
+  }

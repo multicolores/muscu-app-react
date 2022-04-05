@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@400;900&display=swap");
-
+@import "./styles/variables";
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  background-color: #151618;
-  color: white;
+  background-color: $bg_color;
+  color: $font_color;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -16,13 +16,45 @@ h1 {
 }
 nav{
   text-align: right;
+  position: relative;
+  padding-top: 3vh;
   a{
     margin-right: 5%;
     color: white;
     text-decoration: none;
   }
+  h1{
+    text-align: left;
+    position: absolute;
+    left: 5vw;
+    top: 50%;
+    width: 20%;
+    font-size: 2em;
+  }
 }
-
+.borderButton{
+  background: $bg_color !important;
+  border-radius: 0 !important;
+  border: 2px solid $font_color !important;
+  font-weight: 700 !important;
+  &::after{
+    z-index: -1;
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid $font_color;
+    transition: .3s;
+  }
+}
+.gradientButton{
+  background: $gradient !important;
+  color: $bg_color !important;
+  font-weight: 900 !important;
+  padding: 12px 25px !important;
+}
 .contactPage_Container {
   height: 100vh;
   width: 100%;
@@ -47,5 +79,19 @@ nav{
     button {
       margin-top: 5%;
     }
+  }
+}
+
+
+header{
+  padding: 5vh 15vw;
+  h1{
+    font-size: 4vw;
+  }
+  .btAddTraining{
+    position: absolute;
+    top: 20vh;
+    right: 15vw;
+    z-index: 5;
   }
 }
