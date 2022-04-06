@@ -119,7 +119,9 @@ function MainPage() {
       {/* {workout && <TestChildElement data={workout} />} */}
 
       {workout &&
-        workout.map((id: any) => <Workout workout_id={id} key={id} />)}
+        workout.map((id: any) => (
+          <Workout workout_id={id} key={id} userid={data.user._id} />
+        ))}
 
       {/* {workout &&
         workout.forEach((id: any) => {

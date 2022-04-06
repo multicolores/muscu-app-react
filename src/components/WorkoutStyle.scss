@@ -10,6 +10,14 @@
     margin: 7vh 0;
     margin-left: 50%;
     transform: translateX(-50%);
+    position: relative;
+    .deleteIcon{
+      position: absolute;
+      right: 1%;
+      top: 1%;
+      color: white;
+      
+    }
     h2{
       padding-bottom: 4%;
       font-size: 3em;
@@ -53,6 +61,9 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+      span{
+        font-weight: bold;
+      }
     }
     .repsContainer {
       width: 70%;

@@ -11,6 +11,8 @@ import { useCookies } from "react-cookie";
 
 // import Fab from "@material-ui/core/Fab";
 // import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
 
 import "./WorkoutStyle.scss";
 import AddTraining from "./AddTraining";
@@ -89,6 +91,14 @@ function Workout(props: any) {
   //   }
   //   return repRow;
   // }
+  function deleteWorkout() {
+    console.log("supprimer");
+    console.log(data);
+    console.log(props.userid);
+    console.log(cookies.user);
+    //TODO validation suppresion workout
+    //TODO suppimer le workout de la base de donnée ( ou pas mais si je pense ) et le supprimer du user workout
+  }
 
   return (
     <div className="workoutContainer">
@@ -98,6 +108,16 @@ function Workout(props: any) {
       {data && (
         <>
           <div className="workoutsCard_container">
+            {/* <DeleteIcon className="deleteIcon" /> */}
+            <IconButton
+              aria-label="delete"
+              className="deleteIcon"
+              onClick={() => {
+                deleteWorkout();
+              }}
+            >
+              <DeleteIcon />
+            </IconButton>
             <h2>{data.name}</h2>
             <span className="description">{data.description}</span>
             <div className="exoInfo_container">

@@ -74,10 +74,12 @@ const ExoRepsInput = ({ exercise, workoutData }) => {
     // console.log(e);
     for (let i = 0; i < e.target.length - 1; i++) {
       TrainingrepsArray.push(parseInt(e.target[i].value));
+      e.target[i].value = "";
     }
     // console.log(TrainingrepsArray);
     updateWorkout(TrainingrepsArray, workoutData, exercise);
-    // e.preventDefault();
+    alert("Sets has been created");
+    e.preventDefault();
   }
   return (
     <div className="exerciseTable">

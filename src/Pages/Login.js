@@ -86,7 +86,7 @@ function Login() {
               onClick={RegisterPostRequest}
               className="loginButton"
             >
-              Sign up
+              Sign in
             </Button>
           </div>
         </div>
