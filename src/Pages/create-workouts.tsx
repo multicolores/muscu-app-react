@@ -85,24 +85,7 @@ function CreateWorkout() {
   return (
     <div className="creatWorkout_container">
       <h1>Create a workout</h1>
-      <Button
-        variant="contained"
-        className="btAddExo"
-        onClick={() => {
-          setexerciseNumber(exerciseNumber + 1);
-        }}
-      >
-        Add exercise
-      </Button>
-      <Button
-        variant="contained"
-        className="btAddExo"
-        onClick={() => {
-          setexerciseNumber(exerciseNumber - 1);
-        }}
-      >
-        -
-      </Button>
+
       <form onSubmit={CreateTheWorkout}>
         <div>
           <label htmlFor="workoutname">Workout's Name :</label>
@@ -114,6 +97,26 @@ function CreateWorkout() {
           <input type="submit" value="Create workout" className="submitInput" />
         </Button>
       </form>
+      <div className="btAddContainer">
+        <Button
+          variant="contained"
+          className="btAddExo borderButton"
+          onClick={() => {
+            setexerciseNumber(exerciseNumber + 1);
+          }}
+        >
+          Add exercise
+        </Button>
+        <Button
+          variant="contained"
+          className="btAddExo borderButton"
+          onClick={() => {
+            setexerciseNumber(exerciseNumber - 1);
+          }}
+        >
+          -
+        </Button>
+      </div>
     </div>
   );
 }

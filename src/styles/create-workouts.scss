@@ -1,7 +1,18 @@
 @import "variables";
 
 .creatWorkout_container{
-    padding: 0 20vw;
+    padding: 10vh 20vw;
+    margin-bottom: 10vh;
+    position: relative;
+    .btAddContainer{
+        position: fixed;
+        right: 6vw;
+        top: 10vh;
+        width: 20vw;
+    }
+    .btAddExo{
+        margin-left: 5%;
+    }
     form{
         padding: 0 10vw;
         position: relative;

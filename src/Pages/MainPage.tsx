@@ -120,7 +120,7 @@ function MainPage() {
 
       {workout &&
         workout.map((id: any) => (
-          <Workout workout_id={id} key={id} userid={data.user._id} />
+          <Workout workout_id={id} key={id} user={data.user} />
         ))}
 
       {/* {workout &&

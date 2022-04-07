@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./App.scss";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import HomePage from "./Pages/home-page";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import MainPage from "./Pages/MainPage";
@@ -22,6 +23,7 @@ function App() {
             <Link to="/create-workouts">Create Workouts</Link>
           </nav>
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/mainpage" element={<MainPage />} />

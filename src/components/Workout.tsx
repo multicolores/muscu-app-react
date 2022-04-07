@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 // import { TextField } from "@mui/material";
 // import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 // import { Link } from "react-router-dom";
 import axios from "axios";
@@ -16,6 +15,7 @@ import IconButton from "@mui/material/IconButton";
 
 import "./WorkoutStyle.scss";
 import AddTraining from "./AddTraining";
+import { deleteWorkout } from "../servicesFunctions/deleteWorkout";
 
 function Workout(props: any) {
   const [cookies, setCookie] = useCookies(["user"]);
@@ -49,7 +49,6 @@ function Workout(props: any) {
         setLoading(false);
       });
   }, []);
-  let i = 0;
 
   function CreatExercise() {
     // https://flaviocopes.com/react-how-to-loop/
@@ -91,13 +90,20 @@ function Workout(props: any) {
   //   }
   //   return repRow;
   // }
-  function deleteWorkout() {
+  function buttonDeleteWorkout() {
     console.log("supprimer");
     console.log(data);
-    console.log(props.userid);
+    console.log(props.user);
+    console.log(data._id);
     console.log(cookies.user);
+
+    let res = deleteWorkout(props.user, data._id, cookies.user);
+    if (res) {
+      alert("Workout removed");
+    } else {
+      alert("something went wrong, please try again");
+    }
     //TODO validation suppresion workout
-    //TODO suppimer le workout de la base de donnée ( ou pas mais si je pense ) et le supprimer du user workout
   }
 
   return (
@@ -113,7 +119,7 @@ function Workout(props: any) {
               aria-label="delete"
               className="deleteIcon"
               onClick={() => {
-                deleteWorkout();
+                buttonDeleteWorkout();
               }}
             >
               <DeleteIcon />
@@ -163,5 +169,3 @@ function Workout(props: any) {
 }
 
 export default Workout;
-
-const DataTableRow = ({ data }) => <p>{data.name}</p>;
