@@ -100,7 +100,7 @@ function CreateWorkout() {
       <div className="btAddContainer">
         <Button
           variant="contained"
-          className="btAddExo borderButton"
+          className="btAddExo"
           onClick={() => {
             setexerciseNumber(exerciseNumber + 1);
           }}
@@ -109,7 +109,7 @@ function CreateWorkout() {
         </Button>
         <Button
           variant="contained"
-          className="btAddExo borderButton"
+          className="btAddExo"
           onClick={() => {
             setexerciseNumber(exerciseNumber - 1);
           }}

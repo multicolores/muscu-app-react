@@ -4,23 +4,35 @@
     padding: 10vh 20vw;
     margin-bottom: 10vh;
     position: relative;
+    @media (max-width: 400px) {
+        padding: 10vh 2vw;
+    }
     .btAddContainer{
         position: fixed;
         right: 6vw;
         top: 10vh;
-        width: 20vw;
+        width: 20vw; 
+        display: flex;
+        justify-content: end;
+        @media (max-width: 400px) {
+        right: 5vw;
+        width: 80vw;
+        }
     }
     .btAddExo{
         margin-left: 5%;
+        background: $primary_color;
+        border-radius: 10px;
     }
     form{
         padding: 0 10vw;
         position: relative;
         input{
-            background: rgba(255, 255, 255, 0.077);
+            // background: rgba(150, 150, 150, 0.077);
+            background: rgba(163, 162, 162, 0.603);
             border: none;
             border-radius: 10px;
-            color: white;
+            color: $font_color;
             font-size: 1.3em;
             padding: 10px 10px;
         }

@@ -1,3 +1,5 @@
+@import "../styles/variables";
+
 .inputRepContainer {
   width: 70%;
   position: relative;
@@ -11,10 +13,10 @@
   }
   input {
     width: 12%;
-    color: white;
+    color: $font_color;
     background: rgba(0, 0, 0, 0);
     border: none;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid $font_color;
     transition: 0.3s;
     text-align: center;
     margin-left: 2px;
@@ -33,7 +35,7 @@
     cursor: pointer;
     padding: 5% 7%;
     position: absolute;
-    right: -29%;
+    right: -23%;
     top: 50%;
     transform: translateY(-50%);
   }
@@ -51,11 +53,18 @@
     right: -25%;
     top: 50%;
     transform: translateY(-50%);
+    @media (max-width: 400px) {
+      right: -18vw;
+    }
   }
   .AddSetbt {
     position: absolute;
     right: -13%;
     top: 50%;
     transform: translateY(-50%);
+    color: $primary_color;
+    @media (max-width: 400px) {
+      right: -10vw;
+    }
   }
 }
