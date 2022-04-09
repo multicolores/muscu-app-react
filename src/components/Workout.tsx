@@ -15,6 +15,8 @@ import IconButton from "@mui/material/IconButton";
 
 import "./WorkoutStyle.scss";
 import AddTraining from "./AddTraining";
+// import Notification from "./materialUI/Notification";
+import ConfirmDialog from "./materialUI/ConfirmDialog";
 import { deleteWorkout } from "../servicesFunctions/deleteWorkout";
 
 function Workout(props: any) {
@@ -23,11 +25,45 @@ function Workout(props: any) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [AddTrainingbt, setAddTrainingbt] = useState(false);
+  // const [notify, setNotify] = useState({
+  //   isOpen: false,
+  //   message: "",
+  //   type: "",
+  // });
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+    onConfirm: null,
+  });
 
   const workout_id = props.workout_id;
 
   useEffect(() => {
     // fetch every workouts id present in user
+    fetchTrainingsData();
+    // axios
+    //   .get("https://api-nodejs-todo.herokuapp.com/workout/" + workout_id, {
+    //     headers: {
+    //       "auth-token": cookies.user,
+    //     },
+    //   })
+    //   .then((res) => {
+    //     //   console.log(res.data);
+    //     setData(res.data);
+    //     console.log(res.data);
+    //     setError(null);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //     setError(err.message);
+    //     setData(null);
+    //   })
+    //   .finally(() => {
+    //     setLoading(false);
+    //   });
+  }, []);
+  function fetchTrainingsData() {
     axios
       .get("https://api-nodejs-todo.herokuapp.com/workout/" + workout_id, {
         headers: {
@@ -37,7 +73,7 @@ function Workout(props: any) {
       .then((res) => {
         //   console.log(res.data);
         setData(res.data);
-        console.log(res.data);
+        // console.log(res.data);
         setError(null);
       })
       .catch((err) => {
@@ -48,7 +84,7 @@ function Workout(props: any) {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }
 
   function CreatExercise() {
     // https://flaviocopes.com/react-how-to-loop/
@@ -91,19 +127,26 @@ function Workout(props: any) {
   //   return repRow;
   // }
   function buttonDeleteWorkout() {
-    console.log("supprimer");
-    console.log(data);
-    console.log(props.user);
-    console.log(data._id);
-    console.log(cookies.user);
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
 
     let res = deleteWorkout(props.user, data._id, cookies.user);
     if (res) {
-      alert("Workout removed");
+      props.setNotify({
+        isOpen: true,
+        message: "Workout Supprimer",
+        type: "success",
+      });
+      props.reloadDatas();
     } else {
-      alert("something went wrong, please try again");
+      props.setNotify({
+        isOpen: true,
+        message: "something went wrong, please try again",
+        type: "error",
+      });
     }
-    //TODO validation suppresion workout
   }
 
   return (
@@ -119,7 +162,14 @@ function Workout(props: any) {
               aria-label="delete"
               className="deleteIcon"
               onClick={() => {
-                buttonDeleteWorkout();
+                setConfirmDialog({
+                  isOpen: true,
+                  title: "Do you really want to delete this workout ?",
+                  subTitle: "",
+                  onConfirm: () => {
+                    buttonDeleteWorkout();
+                  },
+                });
               }}
             >
               <DeleteIcon />
@@ -148,7 +198,9 @@ function Workout(props: any) {
           </Button>
           {/* <p>{data.description}</p> */}
           {/* {showExercises()} */}
-          {AddTrainingbt && <AddTraining workout={data} />}
+          {AddTrainingbt && (
+            <AddTraining workout={data} reloadTrainings={fetchTrainingsData} />
+          )}
 
           <div className="tableContainer">{CreatExercise()}</div>
 
@@ -162,6 +214,11 @@ function Workout(props: any) {
             </>
           ))} */}
           {/* <DataTableRow data={data} /> */}
+          {/* <Notification notify={notify} setNotify={setNotify} /> */}
+          <ConfirmDialog
+            confirmDialog={confirmDialog}
+            setConfirmDialog={setConfirmDialog}
+          />
         </>
       )}
     </div>

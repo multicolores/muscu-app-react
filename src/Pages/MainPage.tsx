@@ -8,6 +8,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import Application from "../components/Application";
 import Workout from "../components/Workout";
+import Notification from "../components/materialUI/Notification";
 import { Link, useNavigate } from "react-router-dom";
 
 function MainPage() {
@@ -21,6 +22,12 @@ function MainPage() {
   const [workouts, setWorkouts] = useState([]);
   // const [workouts, setWorkouts] = useState([]);
   const [errorWorkout, setErrorWorkout] = useState(null);
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
+
   useEffect(() => {
     // User data fetching here
     axios
@@ -92,6 +99,34 @@ function MainPage() {
     navigate("/create-workouts", { state: data });
   };
 
+  function reloadDatas() {
+    axios
+      .get("https://api-nodejs-todo.herokuapp.com/user", {
+        headers: {
+          "auth-token": cookies.user,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+        setUserinfo(res.data.user);
+        setWorkout(res.data.user.workout);
+        console.log(res.data.user.workout);
+        // if (res.data.user.workout.length > 0) {
+        //   getWorkouts(res.data.user.workout);
+        // }
+        // console.log(workouts);
+        setError(null);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setError(err.message);
+        setData(null);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
   return (
     <div>
       {loading && <div>A moment please...</div>}
@@ -120,7 +155,14 @@ function MainPage() {
 
       {workout &&
         workout.map((id: any) => (
-          <Workout workout_id={id} key={id} user={data.user} />
+          <Workout
+            workout_id={id}
+            key={id}
+            user={data.user}
+            reloadDatas={reloadDatas}
+            notify={notify}
+            setNotify={setNotify}
+          />
         ))}
 
       {/* {workout &&
@@ -172,6 +214,7 @@ function MainPage() {
           <h2>Aucun workout :( en créer un </h2>
         )} */}
       {/* {cookies.user && <p>{cookies.user}</p>} */}
+      <Notification notify={notify} setNotify={setNotify} />
     </div>
   );
 }

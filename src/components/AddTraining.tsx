@@ -12,6 +12,7 @@ import axios from "axios";
 
 import { useCookies } from "react-cookie";
 import "./AddTraining.scss";
+import Notification from "./materialUI/Notification";
 
 //import functions
 import { updateWorkout } from "../servicesFunctions/updateWorkout";
@@ -22,7 +23,11 @@ function AddTraining(props: any) {
   //   const [numberSet, setnumberSet] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
   //   setData(props.workout);
   const workout = props.workout;
 
@@ -37,6 +42,9 @@ function AddTraining(props: any) {
           exercise={workout.exercise[i]}
           key={Math.random()}
           workoutData={workout}
+          reloadTrainings={props.reloadTrainings}
+          notify={notify}
+          setNotify={setNotify}
         />
       );
     }
@@ -49,13 +57,21 @@ function AddTraining(props: any) {
       {error && <div>{`There is a problem fetching user data - ${error}`}</div>} */}
       {/* <h1>{workout.name}</h1> */}
       {ExerciseInfo()}
+      <Notification notify={notify} setNotify={setNotify} />
+      {/* On met Notification ici car sinon il est dans le component qui se fait rerender donc la notif n'apparait pas ( elle se fait refresh direct ) */}
     </div>
   );
 }
 
 export default AddTraining;
 
-const ExoRepsInput = ({ exercise, workoutData }) => {
+const ExoRepsInput = ({
+  exercise,
+  workoutData,
+  reloadTrainings,
+  notify,
+  setNotify,
+}) => {
   const [numberSet, setnumberSet] = useState(exercise.repetition[0].length);
   const [repExoArrya, setrepExoArrya] = useState(null);
 
@@ -77,8 +93,14 @@ const ExoRepsInput = ({ exercise, workoutData }) => {
       e.target[i].value = "";
     }
     // console.log(TrainingrepsArray);
+    setNotify({
+      isOpen: true,
+      message: "Sets has been created",
+      type: "success",
+    });
     updateWorkout(TrainingrepsArray, workoutData, exercise);
-    alert("Sets has been created");
+
+    reloadTrainings();
     e.preventDefault();
   }
   return (
