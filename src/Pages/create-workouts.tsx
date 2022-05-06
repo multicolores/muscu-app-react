@@ -37,9 +37,13 @@ function CreateWorkout() {
       console.log(objectArray);
       let exerciseObject = {
         name: objectArray[0],
-        repetition: objectArray[1],
-        recuperation: objectArray[2],
-        weight: objectArray[3],
+        repetition: "",
+        recuperation: objectArray[1],
+        weight: objectArray[2],
+        // name: objectArray[0],
+        // repetition: objectArray[1],
+        // recuperation: objectArray[2],
+        // weight: objectArray[3],
       };
       exercisesArrayToSend.push(exerciseObject);
       separation = separation + 4;
@@ -70,8 +74,8 @@ function CreateWorkout() {
         <div className="exercisesInputs">
           <label htmlFor={"exoname" + i}>Exercise's Name :</label>
           <input type="text" name={"exoname" + i} />
-          <label htmlFor={"exoNbSet" + i}>Set number:</label>
-          <input type="text" name={"exoNbSet" + i} />
+          {/* <label htmlFor={"exoNbSet" + i}>Set number:</label>
+          <input type="text" name={"exoNbSet" + i} /> */}
           <label htmlFor={"recuperation" + i}>Recuperation :</label>
           <input type="text" name={"recuperation" + i} />
           <label htmlFor={"weight" + i}>Weight :</label>

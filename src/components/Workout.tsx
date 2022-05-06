@@ -25,6 +25,7 @@ function Workout(props: any) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [AddTrainingbt, setAddTrainingbt] = useState(false);
+  const [showWorkout, setShowWorkout] = useState(false);
   // const [notify, setNotify] = useState({
   //   isOpen: false,
   //   message: "",
@@ -156,7 +157,12 @@ function Workout(props: any) {
       {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
       {data && (
         <>
-          <div className="workoutsCard_container">
+          <div
+            className="workoutsCard_container"
+            onClick={() => {
+              setShowWorkout(!showWorkout);
+            }}
+          >
             {/* <DeleteIcon className="deleteIcon" /> */}
             <IconButton
               aria-label="delete"
@@ -186,39 +192,46 @@ function Workout(props: any) {
             </div>
             <span className="date">12/03/2022</span>
           </div>
-          <h1>{data.name}</h1>
-          <Button
-            variant="contained"
-            onClick={() => {
-              setAddTrainingbt(!AddTrainingbt);
-            }}
-            className="btAddTraining borderButton"
-          >
-            Add Training
-          </Button>
-          {/* <p>{data.description}</p> */}
-          {/* {showExercises()} */}
-          {AddTrainingbt && (
-            <AddTraining workout={data} reloadTrainings={fetchTrainingsData} />
-          )}
+          {showWorkout && (
+            <>
+              <h1>{data.name}</h1>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setAddTrainingbt(!AddTrainingbt);
+                }}
+                className="btAddTraining borderButton"
+              >
+                Add Training
+              </Button>
+              {/* <p>{data.description}</p> */}
+              {/* {showExercises()} */}
+              {AddTrainingbt && (
+                <AddTraining
+                  workout={data}
+                  reloadTrainings={fetchTrainingsData}
+                />
+              )}
 
-          <div className="tableContainer">{CreatExercise()}</div>
+              <div className="tableContainer">{CreatExercise()}</div>
 
-          {/* {data.exercise.map((name: string) => (
+              {/* {data.exercise.map((name: string) => (
             <p key={name}>{name}</p>
           ))} */}
 
-          {/* {data.training.map((id: string) => (
+              {/* {data.training.map((id: string) => (
             <>
               <p key={id}>{id}</p>
             </>
           ))} */}
-          {/* <DataTableRow data={data} /> */}
-          {/* <Notification notify={notify} setNotify={setNotify} /> */}
-          <ConfirmDialog
-            confirmDialog={confirmDialog}
-            setConfirmDialog={setConfirmDialog}
-          />
+              {/* <DataTableRow data={data} /> */}
+              {/* <Notification notify={notify} setNotify={setNotify} /> */}
+              <ConfirmDialog
+                confirmDialog={confirmDialog}
+                setConfirmDialog={setConfirmDialog}
+              />
+            </>
+          )}
         </>
       )}
     </div>
