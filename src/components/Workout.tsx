@@ -17,6 +17,8 @@ import "./WorkoutStyle.scss";
 import AddTraining from "./AddTraining";
 // import Notification from "./materialUI/Notification";
 import ConfirmDialog from "./materialUI/ConfirmDialog";
+import AddTrainingDialog from "./materialUI/AddTrainingDialog";
+
 import { deleteWorkout } from "../servicesFunctions/deleteWorkout";
 
 function Workout(props: any) {
@@ -35,6 +37,11 @@ function Workout(props: any) {
     isOpen: false,
     title: "",
     subTitle: "",
+    onConfirm: null,
+  });
+  const [addTrainingDialog, setAddTrainingDialog] = useState({
+    isOpen: false,
+    workout: { repetition: [[0]] },
     onConfirm: null,
   });
 
@@ -87,7 +94,7 @@ function Workout(props: any) {
       });
   }
 
-  function CreatExercise() {
+  function ShowExercises() {
     // https://flaviocopes.com/react-how-to-loop/
 
     let items = [];
@@ -95,6 +102,22 @@ function Workout(props: any) {
       console.log(data.exercise[i].name);
       items.push(
         <div className="exerciseTable">
+          <Button
+            variant="contained"
+            onClick={() => {
+              // setAddTrainingbt(!AddTrainingbt);
+              setAddTrainingDialog({
+                isOpen: true,
+                workout: data.exercise[i],
+                onConfirm: () => {
+                  test();
+                },
+              });
+            }}
+            className="btAddTraining borderButton"
+          >
+            Add Training
+          </Button>
           <div className="exoInfo">
             <span>{data.exercise[i].name}</span>
             <span>{data.exercise[i].recuperation}</span>
@@ -150,6 +173,10 @@ function Workout(props: any) {
     }
   }
 
+  function test() {
+    console.log("ok");
+  }
+
   return (
     <div className="workoutContainer">
       {loading && <div>A moment please...</div>}
@@ -157,12 +184,7 @@ function Workout(props: any) {
       {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
       {data && (
         <>
-          <div
-            className="workoutsCard_container"
-            onClick={() => {
-              setShowWorkout(!showWorkout);
-            }}
-          >
+          <div className="workoutsCard_container">
             {/* <DeleteIcon className="deleteIcon" /> */}
             <IconButton
               aria-label="delete"
@@ -180,30 +202,43 @@ function Workout(props: any) {
             >
               <DeleteIcon />
             </IconButton>
-            <h2>{data.name}</h2>
-            <span className="description">{data.description}</span>
-            <div className="exoInfo_container">
-              {data.exercise.map((exercise: any) => (
-                <div className="exoInfo">
-                  <li>{exercise.name}</li>
-                  <span>{exercise.repetition.length} training</span>
-                </div>
-              ))}
+            <div
+              onClick={() => {
+                setShowWorkout(!showWorkout);
+              }}
+            >
+              <h2>{data.name}</h2>
+              <span className="description">{data.description}</span>
+              <div className="exoInfo_container">
+                {data.exercise.map((exercise: any) => (
+                  <div className="exoInfo">
+                    <li>{exercise.name}</li>
+                    <span>{exercise.repetition.length} training</span>
+                  </div>
+                ))}
+              </div>
+              <span className="date">12/03/2022</span>
             </div>
-            <span className="date">12/03/2022</span>
           </div>
           {showWorkout && (
             <>
               <h1>{data.name}</h1>
-              <Button
+              {/* <Button
                 variant="contained"
                 onClick={() => {
-                  setAddTrainingbt(!AddTrainingbt);
+                  // setAddTrainingbt(!AddTrainingbt);
+                  setAddTrainingDialog({
+                    isOpen: true,
+                    workout: data,
+                    onConfirm: () => {
+                      test();
+                    },
+                  });
                 }}
                 className="btAddTraining borderButton"
               >
                 Add Training
-              </Button>
+              </Button> */}
               {/* <p>{data.description}</p> */}
               {/* {showExercises()} */}
               {AddTrainingbt && (
@@ -213,7 +248,7 @@ function Workout(props: any) {
                 />
               )}
 
-              <div className="tableContainer">{CreatExercise()}</div>
+              <div className="tableContainer">{ShowExercises()}</div>
 
               {/* {data.exercise.map((name: string) => (
             <p key={name}>{name}</p>
@@ -226,12 +261,16 @@ function Workout(props: any) {
           ))} */}
               {/* <DataTableRow data={data} /> */}
               {/* <Notification notify={notify} setNotify={setNotify} /> */}
-              <ConfirmDialog
-                confirmDialog={confirmDialog}
-                setConfirmDialog={setConfirmDialog}
-              />
             </>
           )}
+          <ConfirmDialog
+            confirmDialog={confirmDialog}
+            setConfirmDialog={setConfirmDialog}
+          />
+          <AddTrainingDialog
+            addTrainingDialog={addTrainingDialog}
+            setAddTrainingDialog={setAddTrainingDialog}
+          />
         </>
       )}
     </div>

@@ -8,6 +8,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 import "./ConfirmDialog.scss";
+
 export default function ConfirmDialog(props: any) {
   const { confirmDialog, setConfirmDialog } = props;
   console.log(props);

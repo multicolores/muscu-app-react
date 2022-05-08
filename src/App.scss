@@ -17,6 +17,10 @@ h1 {
     font-size: 2em !important;
   }
 }
+input{
+  font-family: "Montserrat", sans-serif !important;
+
+}
 nav{
   text-align: right;
   position: relative;
@@ -41,6 +45,7 @@ nav{
   border-radius: 0 !important;
   border: 2px solid $font_color !important;
   font-weight: 700 !important;
+  font-family: "Montserrat", sans-serif !important;
   color: $font_color !important;
   &::after{
     z-index: -1;
@@ -60,6 +65,26 @@ nav{
   color: $bg_color !important;
   font-weight: 900 !important;
   padding: 12px 25px !important;
+}
+
+.simpleBorderButton{
+  background: rgba(255, 0, 0, 0) !important;
+  color: $bg_color !important;
+  border: 2px solid $font_color !important;
+  text-transform: none !important;
+  border-radius: 0 !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 1em !important;
+}
+.underlineButton{
+  font-family: "Montserrat", sans-serif !important;
+  text-transform: none !important;
+  background: rgba(255, 0, 0, 0) !important;
+  color: $font_color !important;
+  border-radius: 0 !important;
+  border: none !important;
+  font-size: 1em !important;
+  border-bottom: 2px solid $font_color !important;
 }
 .contactPage_Container {
   height: 100vh;

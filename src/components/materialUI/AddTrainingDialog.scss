@@ -1,0 +1,85 @@
+@import "../../styles/variables";
+
+.addTraining_DialogContainer{
+    background: $font_color;
+    color: $bg_color;
+    padding: 2vh 5vw;
+    @media (max-width : 400px) {
+        padding: 2vh 0vw;
+    }
+    h3{
+        padding-top: 2vh;
+        font-size: 1.5em;
+        @media (max-width : 400px) {
+            padding: 2vh 5vw;
+        }
+    }
+    input {
+        color: $bg_color;
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        border-bottom: 2px solid $bg_color;
+        transition: 0.3s;
+        text-align: center;
+        margin-left: 2px;
+        font-size: 1.3em;
+        @media (max-width: 400px) {
+            font-size: 1em;
+        } 
+        &:focus {
+          outline: none !important;
+          border-bottom: 2px solid rgb(27, 213, 219);
+        }
+    }
+    .weightRecup_input{
+        padding: 3vh 0;
+        display: flex;
+        justify-content: space-between;
+        input{
+            width: 15%;
+        }
+
+    }
+    .reps_input{
+        padding: 2vh 0;
+        display: flex;
+        justify-content: space-between;
+        .reps_container{
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            width: 70%;
+            input{
+                width: 10%;
+            }
+        }
+        .btReps{
+            width: 20%;
+            display: flex;
+            justify-content: space-between;
+            button{
+                width: 45%;
+                background: rgba(0, 0, 0, 0);
+                border: none;
+                font-size: 2em;
+                color: $bg_color;
+            }
+        }
+    }
+    .buttons_Container{
+        // width: 45%;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        .simpleBorderButton{
+            border: 2px solid $bg_color !important;
+        }
+        .underlineButton{
+            border-bottom: 2px solid $bg_color !important;
+            color: $bg_color !important;
+        }
+    }
+
+
+}  
+
