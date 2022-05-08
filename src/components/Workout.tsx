@@ -102,7 +102,8 @@ function Workout(props: any) {
       console.log(data.exercise[i].name);
       items.push(
         <div className="exerciseTable">
-          <Button
+          <AddTrainingDialog exercise={data.exercise[i]} />
+          {/* <Button
             variant="contained"
             onClick={() => {
               // setAddTrainingbt(!AddTrainingbt);
@@ -117,7 +118,7 @@ function Workout(props: any) {
             className="btAddTraining borderButton"
           >
             Add Training
-          </Button>
+          </Button> */}
           <div className="exoInfo">
             <span>{data.exercise[i].name}</span>
             <span>{data.exercise[i].recuperation}</span>
@@ -267,10 +268,10 @@ function Workout(props: any) {
             confirmDialog={confirmDialog}
             setConfirmDialog={setConfirmDialog}
           />
-          <AddTrainingDialog
+          {/* <AddTrainingDialog
             addTrainingDialog={addTrainingDialog}
             setAddTrainingDialog={setAddTrainingDialog}
-          />
+          /> */}
         </>
       )}
     </div>
