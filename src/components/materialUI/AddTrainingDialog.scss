@@ -3,7 +3,7 @@
 .addTraining_DialogContainer{
     background: $font_color;
     color: $bg_color;
-    padding: 2vh 5vw;
+    padding: 2vh 3vw;
     @media (max-width : 400px) {
         padding: 2vh 0vw;
     }
@@ -72,11 +72,24 @@
         gap: 20px;
         justify-content: space-between;
         .simpleBorderButton{
-            border: 2px solid $bg_color !important;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.200) !important;
+            &:hover{
+                border: 1px solid rgba(255, 255, 255, 0.600) !important;
+
+            }
         }
         .underlineButton{
             border-bottom: 2px solid $bg_color !important;
             color: $bg_color !important;
+        }
+        .submitInput{
+            cursor: pointer;
+            font-size: 1.1em;
+            &:hover {
+            border-bottom: 2px solid rgb(27, 213, 219);
+
+            }
         }
     }
 
