@@ -14,6 +14,10 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import SendIcon from "@mui/icons-material/Send";
 
 import "./AddTrainingDialog.scss";
+import Notification from "./Notification";
+
+//import functions
+import { updateWorkout } from "../../servicesFunctions/updateWorkout";
 
 export default function AddTrainingDialog(props: any) {
   // const { addTrainingDialog, setAddTrainingDialog } = props;
@@ -21,6 +25,11 @@ export default function AddTrainingDialog(props: any) {
   const [numberSet, setNumberSet] = useState(
     props.exercise.repetition[0].length
   );
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
 
   console.log(props);
   const exerciseTab = props.exercise;
@@ -84,10 +93,11 @@ export default function AddTrainingDialog(props: any) {
     return items;
   }
 
-  let FinalArray = [];
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
+    console.log("SUBMIT");
+    let FinalArray = [];
     e.preventDefault();
-    for (let i = 0; i < e.target.length - 4; i++) {
+    for (let i = 0; i < e.target.length - 2; i++) {
       if (i === 0 || i === 1) {
         if (e.target[i].value) FinalArray.push(e.target[i].value);
         else if (i === 0) FinalArray.push(props.exercise.weight);
@@ -96,13 +106,25 @@ export default function AddTrainingDialog(props: any) {
         FinalArray.push(parseInt(e.target[i].value));
       }
 
-      e.target[i].value = "";
+      // e.target[i].value = "";
     }
     console.log(FinalArray);
+    console.log(props.workout);
+    console.log(props.exercise);
+    updateWorkout(FinalArray, props.workout, props.exercise);
+    setNotify({
+      isOpen: true,
+      message: "Sets has been created",
+      type: "success",
+    });
+    setOpen(false);
+    // props.reloadTrainings();
+    //TODO A la place : créer une requette api qui vas chercher seulement la dernière valeur pour l'afficher dès qu'elle est arriver ? attention le problème je pense c'est que parfois on fetch alors que la données n'est pas encore créé.  Hummmm
   };
 
   return (
     <>
+      <Notification notify={notify} setNotify={setNotify} />
       <Button
         variant="outlined"
         onClick={handleClickOpen}
@@ -129,7 +151,7 @@ export default function AddTrainingDialog(props: any) {
               </div>
               <div className="reps_input">
                 <div className="reps_container">{exerciseRep()}</div>
-                <div className="btReps">
+                {/* <div className="btReps">
                   <button
                     onClick={() => {
                       setNumberSet(numberSet + 1);
@@ -144,7 +166,7 @@ export default function AddTrainingDialog(props: any) {
                   >
                     -
                   </button>
-                </div>
+                </div> */}
               </div>
             </DialogContent>
             <DialogActions>
@@ -172,3 +194,44 @@ export default function AddTrainingDialog(props: any) {
     </>
   );
 }
+
+// const ExercieRepInput = (props) => {
+//   const [numberSet, setNumberSet] = useState(props.reps);
+//   console.log(numberSet);
+//   let items = [];
+//   function exerciseRep() {
+//     for (let i = 0; i < numberSet; i++) {
+//       console.log(i);
+//       items.push(
+//         <input
+//           type="text"
+//           key={i}
+//           // onChange={handleChange}
+//           id={`setNumber_${i}`}
+//         />
+//       );
+//     }
+//     return items;
+//   }
+//   return (
+//     <div className="reps_input">
+//       <div className="reps_container">{exerciseRep()}</div>
+//       <div className="btReps">
+//         <button
+//           onClick={() => {
+//             setNumberSet(numberSet + 1);
+//           }}
+//         >
+//           +
+//         </button>
+//         <button
+//           onClick={() => {
+//             setNumberSet(numberSet - 1);
+//           }}
+//         >
+//           -
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };

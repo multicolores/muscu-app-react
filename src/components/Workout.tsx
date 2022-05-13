@@ -72,6 +72,7 @@ function Workout(props: any) {
     //   });
   }, []);
   function fetchTrainingsData() {
+    console.log(" --------- FETCH --------");
     axios
       .get("https://api-nodejs-todo.herokuapp.com/workout/" + workout_id, {
         headers: {
@@ -102,7 +103,7 @@ function Workout(props: any) {
       console.log(data.exercise[i].name);
       items.push(
         <div className="exerciseTable">
-          <AddTrainingDialog exercise={data.exercise[i]} />
+          <AddTrainingDialog exercise={data.exercise[i]} workout={data} />
           {/* <Button
             variant="contained"
             onClick={() => {
@@ -121,13 +122,19 @@ function Workout(props: any) {
           </Button> */}
           <div className="exoInfo">
             <span>{data.exercise[i].name}</span>
-            <span>{data.exercise[i].recuperation}</span>
-            <span>{data.exercise[i].weight}</span>
+            {/* <span>{data.exercise[i].recuperation}</span>
+            <span>{data.exercise[i].weight}</span> */}
           </div>
           <div className="repsContainer">
             {data.exercise[i].repetition.map((row: any) => (
-              <div className="repRow" key={Math.random()}>
-                {exercieRep(row)}
+              <div className="repRow">
+                <div className="reps" key={Math.random()}>
+                  {exercieRep(row)}
+                </div>
+                <div className="weightAndRecupContainer">
+                  <span>{row[0]}</span>
+                  <span>{row[1]}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -136,11 +143,26 @@ function Workout(props: any) {
     }
     return items;
   }
-  function exercieRep(repArray: []) {
+  function exercieRep(repArray: any) {
     let repRow = [];
-    for (let e = 0; e < repArray.length; e++) {
-      repRow.push(<span>{repArray[e]}</span>);
+    // let repArray = setArray;
+    // console.log(repArray);
+    // console.log(repArray.splice(0, 2));
+    console.log(repArray);
+
+    // let WeightandrecupArray = repArray.splice(0, 2);
+    if (repArray.length > 2) {
+      for (let e = 2; e < repArray.length; e++) {
+        repRow.push(<span>{repArray[e]}</span>);
+      }
+      // repRow.push(
+      //   <div className="weightAndRecupContainer">
+      //     <span>{repArray[0]} kg</span>
+      //     <span>{repArray[1]}</span>
+      //   </div>
+      // );
     }
+
     return repRow;
   }
 

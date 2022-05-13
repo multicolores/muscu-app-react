@@ -53,43 +53,80 @@
   }
   h1{
     font-size: 5vw;
+    padding: 7vh 0;
+    @media (max-width: 400px) {
+      font-size: 4em !important;
+    }
   }
   .btAddTraining {
     position: absolute;
     right: 5vw;
     @media (max-width: 400px) {
       right: -1vw;
+      top: 20px;
     }
   }
   .exerciseTable {
-    width: 40vw;
-    padding: 4vh 5vw;
+    position: relative;
+    width: 55vw;
+    padding: 4vh 0vw;
     @media (max-width: 400px) {
       width: 80vw;
-      padding: 2vh 0vw;
-      &:first-child{
-      padding-top: 14vh;
-
-      }
+      padding: 4vh 0vw;
+      // &:first-child{
+      // padding-top: 14vh;
+      // }
     }
     .exoInfo {
       display: flex;
-      justify-content: space-around;
+      justify-content: start;
       align-items: center;
+      margin-left: 2vw;
       span{
         font-weight: bold;
+        font-size: 2em;
+      }
+      @media (max-width: 400px) {
+        transform: translateY(-130%);
       }
     }
     .repsContainer {
       width: 70%;
       padding: 5% 0;
-      margin-left: 50%;
+      margin-left: 10%;
+      // margin-left: 50%;
+      // transform: translateX(-50%);
+      @media (max-width: 400px) {
+        width: 100%;
+              margin-left: 50%;
       transform: translateX(-50%);
+      }
       .repRow {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         padding: 3% 0;
+        font-size: 1.3em;
+        @media (max-width: 400px) {
+          font-size: 1em;
+        }
+        .reps{
+          display: flex;
+          justify-content: space-around;
+          font-weight: 500;
+          width: 40%;
+        }
+        .weightAndRecupContainer{
+          // position: absolute;
+          // right: 0;
+          width: 50%;
+          display: flex;
+          justify-content: space-around;
+          font-weight: 900;
+          // span{
+          //   font-weight: bold;
+          // }
+        }
       }
     }
   }
