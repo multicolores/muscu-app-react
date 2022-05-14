@@ -58,42 +58,6 @@ function MainPage() {
       });
   }, []);
 
-  // function getWorkouts(workoutsArray: any) {
-  //   workoutsArray.map((id: any) => {
-  //     axios
-  //       .get("https://api-nodejs-todo.herokuapp.com/workout/" + id, {
-  //         headers: {
-  //           "auth-token": cookies.user,
-  //         },
-  //       })
-  //       .then((res) => {
-  //         //   console.log(res.data);
-  //         workouts.push(res.data);
-  //         console.log(workouts);
-  //         setErrorWorkout(null);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err.message);
-  //         setErrorWorkout(err.message);
-  //       });
-  //   });
-  // }
-
-  // function getInfoWithautorisation() {
-  //   axios
-  //     .get("https://api-nodejs-todo.herokuapp.com/exercise", {
-  //       headers: {
-  //         "auth-token": cookies.user,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
-
   const navigate = useNavigate();
   const toCreateWorkout = () => {
     navigate("/create-workouts", { state: data });
@@ -174,56 +138,6 @@ function MainPage() {
             setNotify={setNotify}
           />
         ))}
-
-      {/* {workout &&
-        workout.forEach((id: any) => {
-          <h1>{id}</h1>;
-        })} */}
-
-      {/* {workout &&
-        (workouts.length === workout.length ? (
-          <Workouts workouts={workouts} />
-        ) : (
-          <h2>Aucun workout :( en créer un </h2>
-        ))} */}
-
-      {/* {workout &&
-        (workouts.length === workout.length ? (
-          <Workouts workouts={workouts} />
-        ) : (
-          <h2>Aucun workout :( en créer un </h2>
-        ))} */}
-
-      {/* {!loadingWorkout &&
-        (workouts.length > 0 ? (
-          <Workouts workouts={workouts} />
-        ) : (
-          <h2>Aucun workout :( en créer un </h2>
-        ))} */}
-
-      {/* {workouts.length > 0 ? (
-        <Workouts workouts={workouts} />
-      ) : (
-        <h2>Aucun workout :( en créer un </h2>
-      )} */}
-
-      {/* <ul>
-          {data &&
-            data.map(({ _id, name, email, password }) => (
-              <li key={_id}>
-                <h3>{name}</h3>
-                <span>{_id}</span>
-                <p>{email}</p>
-                <p>{password}</p>
-              </li>
-            ))}
-        </ul> */}
-      {/* {workout.lenght > 0 ? (
-          <h2>ils y as des workout</h2>
-        ) : (
-          <h2>Aucun workout :( en créer un </h2>
-        )} */}
-      {/* {cookies.user && <p>{cookies.user}</p>} */}
       <Notification notify={notify} setNotify={setNotify} />
     </div>
   );

@@ -50,26 +50,6 @@ function Workout(props: any) {
   useEffect(() => {
     // fetch every workouts id present in user
     fetchTrainingsData();
-    // axios
-    //   .get("https://api-nodejs-todo.herokuapp.com/workout/" + workout_id, {
-    //     headers: {
-    //       "auth-token": cookies.user,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     //   console.log(res.data);
-    //     setData(res.data);
-    //     console.log(res.data);
-    //     setError(null);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //     setError(err.message);
-    //     setData(null);
-    //   })
-    //   .finally(() => {
-    //     setLoading(false);
-    //   });
   }, []);
   function fetchTrainingsData() {
     console.log(" --------- FETCH --------");
@@ -104,26 +84,8 @@ function Workout(props: any) {
       items.push(
         <div className="exerciseTable">
           <AddTrainingDialog exercise={data.exercise[i]} workout={data} />
-          {/* <Button
-            variant="contained"
-            onClick={() => {
-              // setAddTrainingbt(!AddTrainingbt);
-              setAddTrainingDialog({
-                isOpen: true,
-                workout: data.exercise[i],
-                onConfirm: () => {
-                  test();
-                },
-              });
-            }}
-            className="btAddTraining borderButton"
-          >
-            Add Training
-          </Button> */}
           <div className="exoInfo">
             <span>{data.exercise[i].name}</span>
-            {/* <span>{data.exercise[i].recuperation}</span>
-            <span>{data.exercise[i].weight}</span> */}
           </div>
           <div className="repsContainer">
             {data.exercise[i].repetition.map((row: any) => (
@@ -145,34 +107,14 @@ function Workout(props: any) {
   }
   function exercieRep(repArray: any) {
     let repRow = [];
-    // let repArray = setArray;
-    // console.log(repArray);
-    // console.log(repArray.splice(0, 2));
-    console.log(repArray);
-
-    // let WeightandrecupArray = repArray.splice(0, 2);
     if (repArray.length > 2) {
       for (let e = 2; e < repArray.length; e++) {
         repRow.push(<span>{repArray[e]}</span>);
       }
-      // repRow.push(
-      //   <div className="weightAndRecupContainer">
-      //     <span>{repArray[0]} kg</span>
-      //     <span>{repArray[1]}</span>
-      //   </div>
-      // );
     }
-
     return repRow;
   }
 
-  // function exercieRep(repArray: []) {
-  //   let repRow = [];
-  //   for (let e = 0; e < repArray.length; e++) {
-  //     repRow.push(<TableCell>{repArray[e]}</TableCell>);
-  //   }
-  //   return repRow;
-  // }
   function buttonDeleteWorkout() {
     setConfirmDialog({
       ...confirmDialog,
@@ -194,10 +136,6 @@ function Workout(props: any) {
         type: "error",
       });
     }
-  }
-
-  function test() {
-    console.log("ok");
   }
 
   return (
@@ -246,24 +184,6 @@ function Workout(props: any) {
           {showWorkout && (
             <>
               <h1>{data.name}</h1>
-              {/* <Button
-                variant="contained"
-                onClick={() => {
-                  // setAddTrainingbt(!AddTrainingbt);
-                  setAddTrainingDialog({
-                    isOpen: true,
-                    workout: data,
-                    onConfirm: () => {
-                      test();
-                    },
-                  });
-                }}
-                className="btAddTraining borderButton"
-              >
-                Add Training
-              </Button> */}
-              {/* <p>{data.description}</p> */}
-              {/* {showExercises()} */}
               {AddTrainingbt && (
                 <AddTraining
                   workout={data}
@@ -272,28 +192,12 @@ function Workout(props: any) {
               )}
 
               <div className="tableContainer">{ShowExercises()}</div>
-
-              {/* {data.exercise.map((name: string) => (
-            <p key={name}>{name}</p>
-          ))} */}
-
-              {/* {data.training.map((id: string) => (
-            <>
-              <p key={id}>{id}</p>
-            </>
-          ))} */}
-              {/* <DataTableRow data={data} /> */}
-              {/* <Notification notify={notify} setNotify={setNotify} /> */}
             </>
           )}
           <ConfirmDialog
             confirmDialog={confirmDialog}
             setConfirmDialog={setConfirmDialog}
           />
-          {/* <AddTrainingDialog
-            addTrainingDialog={addTrainingDialog}
-            setAddTrainingDialog={setAddTrainingDialog}
-          /> */}
         </>
       )}
     </div>

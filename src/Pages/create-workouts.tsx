@@ -31,9 +31,9 @@ function CreateWorkout() {
     }
     console.log(formArray);
     // console.log(formArray.length / 4);
-    let separation = 4;
-    for (let i = 0; i < formArray.length / 4; i++) {
-      let objectArray = formArray.slice().splice(separation - 4, separation);
+    let separation = 3;
+    for (let i = 0; i < formArray.length / 3; i++) {
+      let objectArray = formArray.slice().splice(separation - 3, separation);
       console.log(objectArray);
       let exerciseObject = {
         name: objectArray[0],
@@ -46,7 +46,7 @@ function CreateWorkout() {
         // weight: objectArray[3],
       };
       exercisesArrayToSend.push(exerciseObject);
-      separation = separation + 4;
+      separation = separation + 3;
     }
     console.log(exercisesArrayToSend);
 
@@ -60,9 +60,12 @@ function CreateWorkout() {
     //TODO now create and import funciton to create a new workout ( form services folder ) with in param workoutObject
     // il vas falloir créer un workout et prendre l'id pour l'ajouter aux user's workouts ids
     // arguments in function : (user, workoutObject)
+
     if (createWorkout(user, workoutObject, cookies.user)) {
       alert("Workout created !");
       setexerciseNumber(0);
+    } else {
+      alert("Error");
     }
     e.preventDefault();
   }
