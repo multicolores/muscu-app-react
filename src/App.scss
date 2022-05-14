@@ -25,6 +25,7 @@ nav{
   text-align: right;
   position: relative;
   padding-top: 3vh;
+  padding: 3vh 5vw;
   z-index: 5;
   a{
     margin-right: 5%;
@@ -131,4 +132,23 @@ header{
       right: 5vw;
     } 
   }
+  .btLogout{
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 2vh;
+    right: 1vw;
+    z-index: 5;
+    color: black !important;
+    border: none !important;
+    font-family: "Montserrat", sans-serif !important;
+  font-size: 1em !important;
+  text-transform: none !important;
+  &:hover{
+    background-color: rgba(0, 0, 0, 0);
+  }
+    // border-radius: 5px !important;
+    @media (max-width: 400px) {
+      top: 11vh;
+    }
+    }
 }

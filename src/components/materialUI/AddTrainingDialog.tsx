@@ -79,16 +79,30 @@ export default function AddTrainingDialog(props: any) {
 
   let items = [];
   function exerciseRep() {
-    for (let i = 0; i < numberSet; i++) {
-      console.log(i);
-      items.push(
-        <input
-          type="text"
-          key={i}
-          onChange={handleChange}
-          id={`setNumber_${i}`}
-        />
-      );
+    if (numberSet !== 0) {
+      for (let i = 0; i < numberSet; i++) {
+        console.log(i);
+        items.push(
+          <input
+            type="text"
+            key={i}
+            onChange={handleChange}
+            id={`setNumber_${i}`}
+          />
+        );
+      }
+    } else {
+      for (let i = 0; i < 4; i++) {
+        console.log(i);
+        items.push(
+          <input
+            type="text"
+            key={i}
+            onChange={handleChange}
+            id={`setNumber_${i}`}
+          />
+        );
+      }
     }
     return items;
   }

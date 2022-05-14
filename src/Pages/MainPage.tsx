@@ -18,7 +18,7 @@ function MainPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [cookies, setCookie] = useCookies(["user"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [workouts, setWorkouts] = useState([]);
   // const [workouts, setWorkouts] = useState([]);
   const [errorWorkout, setErrorWorkout] = useState(null);
@@ -127,6 +127,13 @@ function MainPage() {
         setLoading(false);
       });
   }
+
+  function Logout() {
+    if (cookies.user) {
+      removeCookie("user");
+      navigate("/login");
+    }
+  }
   return (
     <div>
       {loading && <div>A moment please...</div>}
@@ -147,6 +154,9 @@ function MainPage() {
             }}
           >
             Create a Workout
+          </Button>
+          <Button variant="contained" className="btLogout" onClick={Logout}>
+            Logout
           </Button>
         </header>
       )}

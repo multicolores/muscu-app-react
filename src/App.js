@@ -5,7 +5,6 @@ import HomePage from "./Pages/home-page";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import MainPage from "./Pages/MainPage";
-import Exercises from "./Pages/Exercises";
 import CreateWorkout from "./Pages/create-workouts";
 import { CookiesProvider } from "react-cookie";
 function App() {
@@ -27,7 +26,6 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/mainpage" element={<MainPage />} />
-            <Route path="/exercises" element={<Exercises />} />
             <Route path="/create-workouts" element={<CreateWorkout />} />
 
             {/* <Route path="about" element={<About />} /> */}
