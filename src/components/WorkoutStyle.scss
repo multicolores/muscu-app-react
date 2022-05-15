@@ -60,22 +60,45 @@
   }
   .btAddTraining {
     position: absolute;
-    right: 5vw;
+    right: 0;
+    top: 0;
     @media (max-width: 400px) {
-      right: -1vw;
-      top: 20px;
+      right: -5vw;
+      top: -50px;
     }
   }
   .exerciseTable {
     position: relative;
     width: 55vw;
     padding: 4vh 0vw;
+    // background: red;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     @media (max-width: 400px) {
       width: 80vw;
       padding: 4vh 0vw;
       // &:first-child{
       // padding-top: 14vh;
       // }
+      // display: inline-block;
+      display: block;
+      // width: 120vw;
+    }
+    .content_container{
+      position: relative;
+      width: 52%;
+      @media (max-width: 400px) {
+        width: 100% ;
+      }
+    }
+    .graphique_container{
+      // z-index: 2;
+      @media (max-width: 400px) {
+        // transform: translateX(-50%);
+        transform: scale(0.8) translateX(-40%);;
+      }
     }
     .exoInfo {
       display: flex;
@@ -86,12 +109,12 @@
         font-weight: bold;
         font-size: 2em;
       }
-      @media (max-width: 400px) {
-        transform: translateY(-130%);
-      }
+
     }
     .repsContainer {
-      width: 70%;
+      // width: 70%;
+      // width: 260%;
+      width: 100%;
       padding: 5% 0;
       margin-left: 10%;
       // margin-left: 50%;

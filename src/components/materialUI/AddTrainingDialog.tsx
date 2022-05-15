@@ -23,7 +23,7 @@ export default function AddTrainingDialog(props: any) {
   // const { addTrainingDialog, setAddTrainingDialog } = props;
   const [open, setOpen] = useState(false);
   const [numberSet, setNumberSet] = useState(
-    props.exercise.repetition[0].length
+    props.exercise.repetition[0].length - 2
   );
   const [notify, setNotify] = useState({
     isOpen: false,

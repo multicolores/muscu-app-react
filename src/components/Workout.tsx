@@ -18,6 +18,7 @@ import AddTraining from "./AddTraining";
 // import Notification from "./materialUI/Notification";
 import ConfirmDialog from "./materialUI/ConfirmDialog";
 import AddTrainingDialog from "./materialUI/AddTrainingDialog";
+import Graphique from "./Graphique";
 
 import { deleteWorkout } from "../servicesFunctions/deleteWorkout";
 
@@ -83,22 +84,27 @@ function Workout(props: any) {
       console.log(data.exercise[i].name);
       items.push(
         <div className="exerciseTable">
-          <AddTrainingDialog exercise={data.exercise[i]} workout={data} />
-          <div className="exoInfo">
-            <span>{data.exercise[i].name}</span>
+          <div className="content_container">
+            <AddTrainingDialog exercise={data.exercise[i]} workout={data} />
+            <div className="exoInfo">
+              <span>{data.exercise[i].name}</span>
+            </div>
+            <div className="repsContainer">
+              {data.exercise[i].repetition.map((row: any) => (
+                <div className="repRow">
+                  <div className="reps" key={Math.random()}>
+                    {exercieRep(row)}
+                  </div>
+                  <div className="weightAndRecupContainer">
+                    <span>{row[0]}</span>
+                    <span>{row[1]}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="repsContainer">
-            {data.exercise[i].repetition.map((row: any) => (
-              <div className="repRow">
-                <div className="reps" key={Math.random()}>
-                  {exercieRep(row)}
-                </div>
-                <div className="weightAndRecupContainer">
-                  <span>{row[0]}</span>
-                  <span>{row[1]}</span>
-                </div>
-              </div>
-            ))}
+          <div className="graphique_container">
+            <Graphique data={data.exercise[i].repetition} />
           </div>
         </div>
       );
