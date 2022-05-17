@@ -79,7 +79,7 @@ export default function AddTrainingDialog(props: any) {
 
   let items = [];
   function exerciseRep() {
-    if (numberSet !== 0) {
+    if (numberSet > 0) {
       for (let i = 0; i < numberSet; i++) {
         console.log(i);
         items.push(
