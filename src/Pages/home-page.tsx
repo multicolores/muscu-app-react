@@ -7,7 +7,7 @@ function HomePage() {
   return (
     <div className="homePage_container">
       <header>
-        <h1>Votre application de musculation pour suivre vos entrainement.</h1>
+        <h1>Votre application de musculation pour suivre vos entrainements.</h1>
 
         <Link to="/register">
           <Button variant="contained" className="borderButton">

@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 // import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+
 // import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -100,7 +102,14 @@ function MainPage() {
   }
   return (
     <div>
-      {loading && <div>A moment please...</div>}
+      {loading && (
+        <div className="loadingContainer">
+          <div>
+            <CircularProgress />
+            <span>Loading</span>
+          </div>
+        </div>
+      )}
       {error && <div>{`There is a problem fetching user data - ${error}`}</div>}
       {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
       {data && (
