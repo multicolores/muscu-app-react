@@ -107,7 +107,36 @@ export default function AddTrainingDialog(props: any) {
     return items;
   }
 
-  const handleSubmit = (e: any) => {
+  // const handleSubmit = (e: any) => {
+  //   console.log("SUBMIT");
+  //   let FinalArray = [];
+  //   e.preventDefault();
+  //   for (let i = 0; i < e.target.length - 2; i++) {
+  //     if (i === 0 || i === 1) {
+  //       if (e.target[i].value) FinalArray.push(e.target[i].value);
+  //       else if (i === 0) FinalArray.push(props.exercise.weight);
+  //       else if (i === 1) FinalArray.push(props.exercise.recuperation);
+  //     } else {
+  //       FinalArray.push(parseInt(e.target[i].value));
+  //     }
+
+  //     // e.target[i].value = "";
+  //   }
+  //   console.log(FinalArray);
+  //   console.log(props.workout);
+  //   console.log(props.exercise);
+  //   updateWorkout(FinalArray, props.workout, props.exercise);
+  //   setNotify({
+  //     isOpen: true,
+  //     message: "Sets has been created",
+  //     type: "success",
+  //   });
+  //   setOpen(false);
+  //   // props.reloadTrainings();
+  //   //TODO A la place : créer une requette api qui vas chercher seulement la dernière valeur pour l'afficher dès qu'elle est arriver ? attention le problème je pense c'est que parfois on fetch alors que la données n'est pas encore créé.  Hummmm
+  // };
+
+  async function handleSubmit(e: any) {
     console.log("SUBMIT");
     let FinalArray = [];
     e.preventDefault();
@@ -125,17 +154,17 @@ export default function AddTrainingDialog(props: any) {
     console.log(FinalArray);
     console.log(props.workout);
     console.log(props.exercise);
-    updateWorkout(FinalArray, props.workout, props.exercise);
+    await updateWorkout(FinalArray, props.workout, props.exercise);
     setNotify({
       isOpen: true,
       message: "Sets has been created",
       type: "success",
     });
+    props.reloadTrainings();
     setOpen(false);
     // props.reloadTrainings();
     //TODO A la place : créer une requette api qui vas chercher seulement la dernière valeur pour l'afficher dès qu'elle est arriver ? attention le problème je pense c'est que parfois on fetch alors que la données n'est pas encore créé.  Hummmm
-  };
-
+  }
   return (
     <>
       <Notification notify={notify} setNotify={setNotify} />

@@ -85,7 +85,11 @@ function Workout(props: any) {
       items.push(
         <div className="exerciseTable">
           <div className="content_container">
-            <AddTrainingDialog exercise={data.exercise[i]} workout={data} />
+            <AddTrainingDialog
+              exercise={data.exercise[i]}
+              workout={data}
+              reloadTrainings={fetchTrainingsData}
+            />
             <div className="exoInfo">
               <span>{data.exercise[i].name}</span>
             </div>

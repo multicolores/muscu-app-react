@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import "../styles/create-workouts.scss";
+import Notification from "../components/materialUI/Notification";
 import { createWorkout } from "../servicesFunctions/createWorkout";
 import { useCookies } from "react-cookie";
 
@@ -10,6 +11,11 @@ function CreateWorkout() {
   const [exerciseNumber, setexerciseNumber] = useState(1);
   const location = useLocation();
   const [cookies, setCookie] = useCookies(["user"]);
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
 
   console.log(location.state);
   const user = location.state["user"];
@@ -62,7 +68,12 @@ function CreateWorkout() {
     // arguments in function : (user, workoutObject)
 
     if (createWorkout(user, workoutObject, cookies.user)) {
-      alert("Workout created !");
+      // alert("Workout created !");
+      setNotify({
+        isOpen: true,
+        message: "Workout created !",
+        type: "success",
+      });
       setexerciseNumber(0);
     } else {
       alert("Error");
@@ -124,6 +135,7 @@ function CreateWorkout() {
           -
         </Button>
       </div>
+      <Notification notify={notify} setNotify={setNotify} />
     </div>
   );
 }

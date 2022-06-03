@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { TextField } from "@mui/material";
+import Notification from "../components/materialUI/Notification";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -13,8 +14,12 @@ function Login() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [userdata, setuserdata] = useState(null);
-
   const [cookies, setCookie] = useCookies(["user"]);
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
 
   let navigate = useNavigate();
   // useEffect(() => {
@@ -56,7 +61,12 @@ function Login() {
         if (error.response) {
           console.log(error.response.data);
           console.log(error.response.status);
-          alert("Error " + error.response.status + " : " + error.response.data);
+          setNotify({
+            isOpen: true,
+            message: "Error" + " : " + error.response.data,
+            type: "error",
+          });
+          // alert("Error " + error.response.status + " : " + error.response.data);
           // console.log(error.response.headers);
         } else if (error.request) {
           console.log(error.request);
@@ -103,6 +113,7 @@ function Login() {
           </div>
         </div>
       </div>
+      <Notification notify={notify} setNotify={setNotify} />
     </div>
   );
 }

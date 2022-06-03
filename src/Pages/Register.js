@@ -3,6 +3,8 @@ import axios from "axios";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
+import Notification from "../components/materialUI/Notification";
+
 import "../styles/login_register.scss";
 
 function Register() {
@@ -12,6 +14,11 @@ function Register() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
 
   let navigate = useNavigate();
 
@@ -139,7 +146,12 @@ function Register() {
         if (error.response) {
           console.log(error.response.data);
           console.log(error.response.status);
-          alert("Error " + error.response.status + " : " + error.response.data);
+          // alert("Error " + error.response.status + " : " + error.response.data);
+          setNotify({
+            isOpen: true,
+            message: "Error" + " : " + error.response.data,
+            type: "error",
+          });
           // console.log(error.response.headers);
         } else if (error.request) {
           console.log(error.request);
@@ -192,6 +204,7 @@ function Register() {
           </div>
         </div>
       </div>
+      <Notification notify={notify} setNotify={setNotify} />
     </div>
   );
 }
