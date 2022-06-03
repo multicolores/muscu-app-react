@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
@@ -73,6 +74,46 @@ function Register() {
   //     email: "okfeztest@gmail.com",
   //     password: "123456",
   //   };
+  // function RegisterPostRequest() {
+  //   //* attention a bien avoir le bon nombre de lettre toussa
+  //   var jsonRegisterInfo = {
+  //     name: name,
+  //     email: email,
+  //     password: password,
+  //   };
+  //   console.log(jsonRegisterInfo);
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(jsonRegisterInfo),
+  //   };
+  //   fetch("https://api-nodejs-todo.herokuapp.com/register", requestOptions)
+  //     .then(async (response) => {
+  //       const isJson = response.headers
+  //         .get("content-type")
+  //         ?.includes("application/json");
+  //       const data = isJson && (await response.json());
+  //       console.log(response);
+  //       if (!response.ok) {
+  //         const error = (data && data.message) || response.status;
+  //         return Promise.reject(error);
+  //       }
+  //       if (response.ok) {
+  //         navigate("/login");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("There was an error!", error);
+  //       if (error.response) {
+  //         console.log(error.response.data);
+  //         console.log(error.response.status);
+  //         alert("Error " + error.response.status + " : " + error.response.data);
+  //         // console.log(error.response.headers);
+  //       }
+  //       // alert(error);
+  //     });
+  // }
+
   function RegisterPostRequest() {
     //* attention a bien avoir le bon nombre de lettre toussa
     var jsonRegisterInfo = {
@@ -81,31 +122,33 @@ function Register() {
       password: password,
     };
     console.log(jsonRegisterInfo);
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(jsonRegisterInfo),
-    };
-    fetch("https://api-nodejs-todo.herokuapp.com/register", requestOptions)
-      .then(async (response) => {
-        const isJson = response.headers
-          .get("content-type")
-          ?.includes("application/json");
-        const data = isJson && (await response.json());
-        console.log(response);
-        if (!response.ok) {
-          const error = (data && data.message) || response.status;
-          return Promise.reject(error);
-        }
-        if (response.ok) {
-          navigate("/login");
-        }
+
+    axios
+      .post(`https://api-nodejs-todo.herokuapp.com/register`, {
+        name: name,
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        // console.log(res);
+        console.log(res.data);
+        navigate("/login");
       })
       .catch((error) => {
-        console.error("There was an error!", error);
+        console.error(error);
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          alert("Error " + error.response.status + " : " + error.response.data);
+          // console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
       });
   }
-
   return (
     <div>
       <div className="contactPage_Container">
