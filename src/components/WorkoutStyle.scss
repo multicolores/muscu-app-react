@@ -1,49 +1,88 @@
 @import "../styles/variables";
 
+.workoutsComponentsContainer {
+  // position: relative;
+  padding: 0 5vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.workoutsDetailsContainer {
+  background: $bg_color;
+  border: 5px solid $font_color;
+  padding: 0 5vw;
+  position: absolute;
+  z-index: 6;
+  top: 5vh;
+  left: 5vw;
+  width: 90vw;
+  box-shadow: 0px 0px 40px 4px rgba(0, 0, 0, 0.25);
+  @media (max-width: 400px) {
+    padding: 0 1vw;
+    left: 0vw;
+    width: 100%;
+  }
+  .closeButton {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    span {
+      & > * {
+        font-size: 1.5em;
+        color: $font_color;
+      }
+    }
+  }
+}
+
 .workoutContainer {
-  margin: 3vh 10vw;
-  position: relative;
-  .workoutsCard_container{
+  // margin: 3vh 2vw;
+  padding: 2vw;
+  // margin: 3vh 10vw;
+  // position: relative;
+  .workoutsCard_container {
     border: 3px solid $font_color;
     width: 25vw;
     padding: 3% 4%;
     margin: 7vh 0;
     margin-left: 50%;
     transform: translateX(-50%);
-    position: relative;
+    // position: relative;
     cursor: pointer;
     @media (max-width: 400px) {
-      width: 100%;
+      width: 80vw;
+      margin: 2vh 0;
+      margin-left: 50%;
     }
-    .deleteIcon{
+    .deleteIcon {
       position: absolute;
       right: 1%;
       top: 1%;
       color: $font_color;
-      
     }
-    h2{
+    h2 {
       padding-bottom: 4%;
       font-size: 3em;
       text-align: center;
     }
-    span{
+    span {
       display: block;
     }
-    .description{
+    .description {
       font-style: italic;
       text-align: center;
       padding-bottom: 4%;
-
     }
-    .date{
+    .date {
       text-align: end;
       font-weight: bold;
       margin-top: 6%;
     }
-    .exoInfo_container{
+    .exoInfo_container {
       padding: 10% 0;
-      .exoInfo{
+      .exoInfo {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -51,7 +90,7 @@
       }
     }
   }
-  h1{
+  h1 {
     font-size: 5vw;
     padding: 7vh 0;
     @media (max-width: 400px) {
@@ -86,18 +125,19 @@
       display: block;
       // width: 120vw;
     }
-    .content_container{
+    .content_container {
       position: relative;
       width: 52%;
       @media (max-width: 400px) {
-        width: 100% ;
+        width: 100%;
+        margin-left: 5%;
       }
     }
-    .graphique_container{
+    .graphique_container {
       // z-index: 2;
       @media (max-width: 400px) {
         // transform: translateX(-50%);
-        transform: scale(0.8) translateX(-40%);;
+        transform: scale(0.7) translateX(-30%);
       }
     }
     .exoInfo {
@@ -105,11 +145,10 @@
       justify-content: start;
       align-items: center;
       margin-left: 2vw;
-      span{
+      span {
         font-weight: bold;
         font-size: 2em;
       }
-
     }
     .repsContainer {
       // width: 70%;
@@ -121,8 +160,8 @@
       // transform: translateX(-50%);
       @media (max-width: 400px) {
         width: 100%;
-              margin-left: 50%;
-      transform: translateX(-50%);
+        margin-left: 50%;
+        transform: translateX(-50%);
       }
       .repRow {
         display: flex;
@@ -133,13 +172,13 @@
         @media (max-width: 400px) {
           font-size: 1em;
         }
-        .reps{
+        .reps {
           display: flex;
           justify-content: space-around;
           font-weight: 500;
           width: 40%;
         }
-        .weightAndRecupContainer{
+        .weightAndRecupContainer {
           // position: absolute;
           // right: 0;
           width: 50%;

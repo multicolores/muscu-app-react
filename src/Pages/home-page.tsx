@@ -14,7 +14,7 @@ function HomePage() {
             Register
           </Button>
         </Link>
-        <Link to="/login">
+        <Link to="/mainpage">
           <Button variant="contained" className="borderButton">
             Login
           </Button>

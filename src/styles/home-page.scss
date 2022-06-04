@@ -1,15 +1,21 @@
-header{
+.homePage_container {
+  header {
     margin-top: 20vh;
-    h1{
-        padding-bottom: 5%;
+    padding: 0 15vw;
+    @media (max-width: 400px) {
+      padding: 2vh 5vw;
     }
-    a{
-        margin-right: 5%;
-        text-decoration: none;
-        .borderButton{
-            font-size: 1.1em;
-            padding: 10px 30px;
-        }
-
+    h1 {
+      font-size: 4vw;
+      padding-bottom: 5%;
     }
+    a {
+      margin-right: 5%;
+      text-decoration: none;
+      .borderButton {
+        font-size: 1.1em;
+        padding: 10px 30px;
+      }
+    }
+  }
 }

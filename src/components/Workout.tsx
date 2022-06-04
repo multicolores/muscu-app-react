@@ -12,6 +12,7 @@ import { useCookies } from "react-cookie";
 // import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 import "./WorkoutStyle.scss";
 import AddTraining from "./AddTraining";
@@ -192,8 +193,22 @@ function Workout(props: any) {
             </div>
           </div>
           {showWorkout && (
-            <>
+            <div className="workoutsDetailsContainer">
               <h1>{data.name}</h1>
+              <div
+                className="closeButton"
+                onClick={() => {
+                  setShowWorkout(!showWorkout);
+                }}
+              >
+                <IconButton
+                  aria-label="close icon"
+                  component="span"
+                  size="large"
+                >
+                  <CancelIcon fontSize="inherit" />
+                </IconButton>
+              </div>
               {AddTrainingbt && (
                 <AddTraining
                   workout={data}
@@ -202,7 +217,7 @@ function Workout(props: any) {
               )}
 
               <div className="tableContainer">{ShowExercises()}</div>
-            </>
+            </div>
           )}
           <ConfirmDialog
             confirmDialog={confirmDialog}

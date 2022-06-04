@@ -54,6 +54,7 @@ function MainPage() {
         console.log(err.message);
         setError(err.message);
         setData(null);
+        navigate("/login", { state: data });
       })
       .finally(() => {
         setLoading(false);
@@ -113,7 +114,7 @@ function MainPage() {
       {error && <div>{`There is a problem fetching user data - ${error}`}</div>}
       {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
       {data && (
-        <header>
+        <header className="headerMain-pageContainer">
           <h1>{data.user.name}</h1>
           {/* <p>
             Il y a des data on peut faire des truc avec comme afficher le nom du
@@ -135,18 +136,19 @@ function MainPage() {
       )}
 
       {/* {workout && <TestChildElement data={workout} />} */}
-
-      {workout &&
-        workout.map((id: any) => (
-          <Workout
-            workout_id={id}
-            key={id}
-            user={data.user}
-            reloadDatas={reloadDatas}
-            notify={notify}
-            setNotify={setNotify}
-          />
-        ))}
+      <div className="workoutsComponentsContainer">
+        {workout &&
+          workout.map((id: any) => (
+            <Workout
+              workout_id={id}
+              key={id}
+              user={data.user}
+              reloadDatas={reloadDatas}
+              notify={notify}
+              setNotify={setNotify}
+            />
+          ))}
+      </div>
       <Notification notify={notify} setNotify={setNotify} />
     </div>
   );

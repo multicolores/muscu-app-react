@@ -23,7 +23,6 @@ input {
 nav {
   text-align: right;
   position: relative;
-  padding-top: 3vh;
   padding: 3vh 5vw;
   z-index: 5;
   a {
@@ -113,13 +112,18 @@ nav {
   }
 }
 
-header {
-  padding: 5vh 15vw;
+.headerMain-pageContainer {
+  padding: 0vh 15vw;
+  margin-top: 10vh;
   @media (max-width: 400px) {
-    padding: 2vh 5vw;
+    margin-top: 25vh;
+    padding: 0vh 5vw;
   }
   h1 {
     font-size: 4vw;
+    @media (max-width: 400px) {
+      font-size: 3em !important;
+    }
   }
   .btAddTraining {
     position: absolute;

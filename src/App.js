@@ -14,12 +14,12 @@ function App() {
         <div className="App">
           <nav>
             <h1>
-              <Link to="/mainpage">Muscu App</Link>
+              <Link to="/">Muscu App</Link>
             </h1>
             <Link to="/register">Register </Link>
             <Link to="/login">Login </Link>
             <Link to="/mainpage">Main Page</Link>
-            <Link to="/create-workouts">Create Workouts</Link>
+            {/* <Link to="/create-workouts">Create Workouts</Link> */}
           </nav>
           <Routes>
             <Route path="/" element={<HomePage />} />
