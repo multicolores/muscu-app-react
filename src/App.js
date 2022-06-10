@@ -13,12 +13,14 @@ function App() {
       <Router>
         <div className="App">
           <nav>
-            <h1>
-              <Link to="/">Muscu App</Link>
-            </h1>
-            <Link to="/register">Register </Link>
-            <Link to="/login">Login </Link>
-            <Link to="/mainpage">Main Page</Link>
+            <Link to="/" className="logo">
+              Muscu App
+            </Link>
+            <div>
+              <Link to="/register">Register</Link>
+              <Link to="/mainpage">Login</Link>
+            </div>
+            {/* <Link to="/mainpage">Main Page</Link> */}
             {/* <Link to="/create-workouts">Create Workouts</Link> */}
           </nav>
           <Routes>

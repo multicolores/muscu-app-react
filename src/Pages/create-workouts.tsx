@@ -6,6 +6,7 @@ import "../styles/create-workouts.scss";
 import Notification from "../components/materialUI/Notification";
 import { createWorkout } from "../servicesFunctions/createWorkout";
 import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom";
 
 function CreateWorkout() {
   const [exerciseNumber, setexerciseNumber] = useState(1);
@@ -76,7 +77,11 @@ function CreateWorkout() {
       });
       setexerciseNumber(0);
     } else {
-      alert("Error");
+      setNotify({
+        isOpen: true,
+        message: "Erreur",
+        type: "error",
+      });
     }
     e.preventDefault();
   }
@@ -102,7 +107,14 @@ function CreateWorkout() {
   }
   return (
     <div className="creatWorkout_container">
-      <h1>Create a workout</h1>
+      <div className="headerContainer">
+        <h1>Create a workout</h1>
+        <Link to="/mainpage" className="btGoBackMainPage">
+          <Button variant="contained" className="gradientButton">
+            Go Back to main page
+          </Button>
+        </Link>
+      </div>
 
       <form onSubmit={CreateTheWorkout}>
         <div>

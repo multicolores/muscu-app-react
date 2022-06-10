@@ -21,22 +21,51 @@ input {
   font-family: "Montserrat", sans-serif !important;
 }
 nav {
-  text-align: right;
-  position: relative;
-  padding: 3vh 5vw;
+  padding: 2vh 10vw;
   z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   a {
-    margin-right: 5%;
     color: $font_color;
     text-decoration: none;
   }
-  h1 {
-    text-align: left;
-    position: absolute;
-    left: 5vw;
-    top: 50%;
-    width: 20%;
+  .logo {
     font-size: 2em;
+    font-weight: 900;
+  }
+  div {
+    a {
+      margin-left: 4vw;
+      font-size: 1.1em;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -10%;
+        left: 0;
+        width: 100%;
+        height: 15%;
+        background: $primary_color;
+        transform: scale3d(0.001, 1, 1);
+        opacity: 0;
+        transform-origin: 100% 50%;
+        transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1),
+          opacity 0.1s 0.2s linear;
+      }
+      &:hover {
+        &::after {
+          opacity: 1;
+          transform: scale3d(1, 1, 1);
+          transform-origin: 0% 50%;
+          transition: transform 0.7s cubic-bezier(0.2, 1, 0.3, 1),
+            opacity 0.1s linear;
+        }
+      }
+    }
+    @media (max-width: 400px) {
+      width: 70%;
+    }
   }
 }
 .borderButton {

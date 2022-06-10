@@ -1,70 +1,81 @@
 @import "variables";
 
-.creatWorkout_container{
-    padding: 10vh 20vw;
-    margin-bottom: 10vh;
+.creatWorkout_container {
+  padding: 10vh 20vw;
+  margin-bottom: 10vh;
+  position: relative;
+  @media (max-width: 400px) {
+    padding: 10vh 2vw;
+  }
+  .headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .btGoBackMainPage {
     position: relative;
+    text-decoration: none;
+  }
+  .btAddContainer {
+    position: fixed;
+    right: 6vw;
+    top: 10vh;
+    width: 20vw;
+    display: flex;
+    justify-content: end;
     @media (max-width: 400px) {
-        padding: 10vh 2vw;
+      right: 5vw;
+      width: 80vw;
     }
-    .btAddContainer{
-        position: fixed;
-        right: 6vw;
-        top: 10vh;
-        width: 20vw; 
-        display: flex;
-        justify-content: end;
-        @media (max-width: 400px) {
-        right: 5vw;
-        width: 80vw;
-        }
+  }
+  .btAddExo {
+    margin-left: 5%;
+    background: $primary_color;
+    border-radius: 10px;
+  }
+  form {
+    padding: 0 10vw;
+    position: relative;
+    input {
+      // background: rgba(150, 150, 150, 0.077);
+      // background: rgba(163, 162, 162, 0.603);
+      background: rgba(163, 162, 162, 0);
+      border: none;
+      border: 2px solid black;
+      border-radius: 10px;
+      color: $font_color;
+      font-size: 1.3em;
+      padding: 10px 10px;
     }
-    .btAddExo{
-        margin-left: 5%;
-        background: $primary_color;
-        border-radius: 10px;
+    label {
+      display: inline-block;
+      // padding: 5% 2%;
+      // padding-left: 0;
+      padding-top: 8%;
+      padding-bottom: 2%;
+      padding-right: 2%;
+      font-weight: 500;
     }
-    form{
-        padding: 0 10vw;
-        position: relative;
-        input{
-            // background: rgba(150, 150, 150, 0.077);
-            // background: rgba(163, 162, 162, 0.603);
-            background: rgba(163, 162, 162, 0);
-            border: none;
-            border: 2px solid black;
-            border-radius: 10px;
-            color: $font_color;
-            font-size: 1.3em;
-            padding: 10px 10px;
-        }
-        label{
-            display: inline-block;
-            // padding: 5% 2%;
-            // padding-left: 0;
-            padding-top: 8%;
-            padding-bottom: 2%;
-            padding-right: 2%;
-            font-weight: 500;
-        }
-        .exercisesInputs{
-            padding: 2vh 5vw;
-            border-radius: 10px;
-            margin: 5vh 0;
-            border: 1px solid rgba(255, 255, 255, 0.216);
-            & > *{
-                width: 100%
-            }
-        }
-        .borderButton{
-            position: absolute;
-            right: 0;
-        }
-        .submitInput{
-            background: none;
-            font-size: 1.4em;
-            text-align: end;   
-            border: none;    
-        }
+    .exercisesInputs {
+      padding: 2vh 5vw;
+      border-radius: 10px;
+      margin: 5vh 0;
+      border: 1px solid rgba(255, 255, 255, 0.216);
+      & > * {
+        width: 100%;
+      }
     }
+    .borderButton {
+      position: absolute;
+      right: 0;
+    }
+    .submitInput {
+      background: none;
+      font-size: 1.4em;
+      text-align: end;
+      border: none;
+    }
+  }
 }
