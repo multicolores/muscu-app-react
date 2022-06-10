@@ -15,7 +15,6 @@ import IconButton from "@mui/material/IconButton";
 import CancelIcon from "@mui/icons-material/Cancel";
 
 import "./WorkoutStyle.scss";
-import AddTraining from "./AddTraining";
 // import Notification from "./materialUI/Notification";
 import ConfirmDialog from "./materialUI/ConfirmDialog";
 import AddTrainingDialog from "./materialUI/AddTrainingDialog";
@@ -153,7 +152,6 @@ function Workout(props: any) {
     <div className="workoutContainer">
       {loading && <div>A moment please...</div>}
       {error && <div>{`There is a problem fetching user data - ${error}`}</div>}
-      {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
       {data && (
         <>
           <div className="workoutsCard_container">
@@ -210,13 +208,6 @@ function Workout(props: any) {
                   <CancelIcon fontSize="inherit" />
                 </IconButton>
               </div>
-              {/* {AddTrainingbt && (
-                <AddTraining
-                  workout={data}
-                  reloadTrainings={fetchTrainingsData}
-                />
-              )} */}
-
               <div className="tableContainer">{ShowExercises()}</div>
             </div>
           )}

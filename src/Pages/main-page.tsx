@@ -8,7 +8,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 import axios from "axios";
 
 import { useCookies } from "react-cookie";
-import Application from "../components/Application";
 import Workout from "../components/Workout";
 import Notification from "../components/materialUI/Notification";
 import { Link, useNavigate } from "react-router-dom";
@@ -112,7 +111,6 @@ function MainPage() {
         </div>
       )}
       {error && <div>{`There is a problem fetching user data - ${error}`}</div>}
-      {/* {data && <Application user={data.user} workout={data.user.workout} />} */}
       {data && (
         <header className="headerMain-pageContainer">
           <h1>{data.user.name}</h1>

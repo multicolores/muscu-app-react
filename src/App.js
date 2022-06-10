@@ -2,9 +2,9 @@ import * as React from "react";
 import "./App.scss";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import HomePage from "./Pages/home-page";
-import Register from "./Pages/Register";
-import Login from "./Pages/Login";
-import MainPage from "./Pages/MainPage";
+import Register from "./Pages/register-page";
+import Login from "./Pages/login-page";
+import MainPage from "./Pages/main-page";
 import CreateWorkout from "./Pages/create-workouts";
 import { CookiesProvider } from "react-cookie";
 function App() {
