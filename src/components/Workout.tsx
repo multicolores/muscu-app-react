@@ -177,6 +177,7 @@ function Workout(props: any) {
             <div
               onClick={() => {
                 setShowWorkout(!showWorkout);
+                window.scrollTo(0, 0);
               }}
             >
               <h2>{data.name}</h2>
@@ -209,12 +210,12 @@ function Workout(props: any) {
                   <CancelIcon fontSize="inherit" />
                 </IconButton>
               </div>
-              {AddTrainingbt && (
+              {/* {AddTrainingbt && (
                 <AddTraining
                   workout={data}
                   reloadTrainings={fetchTrainingsData}
                 />
-              )}
+              )} */}
 
               <div className="tableContainer">{ShowExercises()}</div>
             </div>
